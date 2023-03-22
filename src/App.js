@@ -1,10 +1,19 @@
 import React from 'react';
+
 import './App.css';
-import './components/styles.css';
-import Card from './components/card';
-import Aside from './components/aside-menu';
+import './components/styles/styles.scss';
+import './components/styles/button.scss';
+
+import Card from './components/Card';
+import Button from './components/Button';
+import Aside from './components/Aside-menu';
 
 import photo from './assets/WIc8yNAljtk.jpg';
+
+const texts = [{
+  prev: 'Prev',
+  next: 'Next'
+}];
 
 class App extends React.Component {
   render () {
@@ -12,7 +21,9 @@ class App extends React.Component {
       <div className="body">
 
       <Aside />
+      <Button />
       <Card url={photo} />
+      <Button />
 
       </div>
     )

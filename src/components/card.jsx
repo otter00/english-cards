@@ -1,10 +1,9 @@
 import React from 'react';
-import './styles.css';
+import './styles/styles.scss';
 
 function Card(props) {
     return (
         <div className="cards__container">
-        <button className="button button__previous">P</button>
 
         <section className="card__content">
             <div className="card-img__container">
@@ -17,7 +16,6 @@ function Card(props) {
             </div>
         </section>
 
-        <button className="button button__next">N</button>
     </div>
     );
 }

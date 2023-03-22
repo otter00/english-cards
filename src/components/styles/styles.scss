@@ -1,0 +1,32 @@
+.cards__container {
+    margin: auto;
+
+    img {
+        width: 550px;
+        height: 350px;
+    }
+
+    .card__word {
+        display: flex;
+        flex-direction: column;
+
+        padding-top: 5%;
+
+        .bold__word,
+        .word__translation {
+            display: flex;
+            justify-content: center;
+        }
+
+        .bold__word {
+            font-size: 24px;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+
+        .word__translation {
+            font-size: 14px;
+            font-style: italic;
+        }
+    }
+}

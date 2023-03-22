@@ -1,0 +1,26 @@
+.cards__container {
+  margin: auto;
+}
+.cards__container img {
+  width: 550px;
+  height: 350px;
+}
+.cards__container .card__word {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
+}
+.cards__container .card__word .bold__word,
+.cards__container .card__word .word__translation {
+  display: flex;
+  justify-content: center;
+}
+.cards__container .card__word .bold__word {
+  font-size: 24px;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.cards__container .card__word .word__translation {
+  font-size: 14px;
+  font-style: italic;
+}/*# sourceMappingURL=styles.css.map */
