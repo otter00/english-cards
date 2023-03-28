@@ -7,23 +7,25 @@ import './components/styles/button.scss';
 import Card from './components/Card';
 import Button from './components/Button';
 import Aside from './components/Aside-menu';
+import TableWords from './components/TableWords';
 
 import photo from './assets/WIc8yNAljtk.jpg';
 
-const texts = [{
-  prev: 'Prev',
-  next: 'Next'
-}];
+// import JSON
+import Words from './components/Words';
 
 class App extends React.Component {
   render () {
+    console.log(Words);
     return (
       <div className="body">
 
       <Aside />
-      <Button />
+      <Button name={'Previous'} />
       <Card url={photo} />
-      <Button />
+      <Button name={'Next'}/>
+
+      <div className='table'></div>
 
       </div>
     )

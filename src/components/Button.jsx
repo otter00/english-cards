@@ -3,7 +3,7 @@ import './styles/styles.scss';
 import './styles/button.scss';
 
 function Button(props) {
-    return <button className="button button__previous">Button</button>;
+    return <button className="button button__previous">{props.name}</button>;
 }
 
 export default Button;
