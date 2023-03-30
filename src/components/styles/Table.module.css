@@ -1,0 +1,13 @@
+.table {
+  border: 1px solid black;
+  margin: 20vh;
+}
+.table * {
+  border: 1px solid black;
+}
+
+.td__btns {
+  display: flex;
+  flex-direction: row;
+  border: none;
+}/*# sourceMappingURL=Table.module.css.map */
