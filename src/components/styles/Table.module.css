@@ -2,12 +2,13 @@
   border: 1px solid black;
   margin: 20vh;
 }
-.table * {
+.table th,
+.table tr,
+.table td {
   border: 1px solid black;
 }
 
-.td__btns {
+.center__flex {
   display: flex;
-  flex-direction: row;
-  border: none;
+  justify-content: center;
 }/*# sourceMappingURL=Table.module.css.map */

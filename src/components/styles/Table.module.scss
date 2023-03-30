@@ -2,14 +2,14 @@
     border: 1px solid black;
     margin: 20vh;
 
-    * {
+    th,
+    tr,
+    td {
         border: 1px solid black;
     }
 }
 
-.td__btns {
+.center__flex {
     display: flex;
-    flex-direction: row;
-
-    border: none;
+    justify-content: center;
 }

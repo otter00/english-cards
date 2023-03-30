@@ -8,14 +8,15 @@ export default class Template extends React.Component {
 
         return (
         <tr>
-            <td>{level}</td>
-            <td>{english}</td>
-            <td>{russian}</td>
+            <td><span className={TableAppearance.center__flex}>{level}</span></td>
+            <td><span className={TableAppearance.center__flex}>{english}</span></td>
+            <td><span className={TableAppearance.center__flex}>{russian}</span></td>
             <td>
-                <div className={TableAppearance.td__btns}>
-                <Button name={'Edit'}></Button>
-            <Button name={'Save'}></Button>
-            <Button name={'Delete'}></Button></div>
+                <div className={TableAppearance.center__flex}>
+                    <Button name={'Edit'}></Button>
+                    <Button name={'Save'}></Button>
+                    <Button name={'Delete'}></Button>
+                </div>
             </td>
         </tr>
         );
