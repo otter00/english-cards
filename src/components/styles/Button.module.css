@@ -1,0 +1,9 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.isClicked {
+  display: none;
+}/*# sourceMappingURL=Button.module.css.map */

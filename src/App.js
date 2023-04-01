@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 import './components/styles/styles.scss';
-import './components/styles/Button.scss';
+import ButtonStyle from './components/styles/Button.module.scss';
 import Table from './components/styles/Table.module.scss'
 
 //import Card from './components/Card';
@@ -22,7 +22,7 @@ class App extends React.Component {
       <div className="body">
 
       <Aside />
-      <Button name={'Previous'} />
+      <Button className={ButtonStyle.button} name={'Previous'} />
       {/* <Card url={photo} /> */}
 
       <table className={Table.table}>
@@ -38,7 +38,7 @@ class App extends React.Component {
       </TableWords>
     </table>
 
-      <Button name={'Next'}/>
+      <Button className={ButtonStyle.button} name={'Next'}/>
 
       </div>
     )
