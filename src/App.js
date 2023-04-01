@@ -5,7 +5,7 @@ import './components/styles/styles.scss';
 import './components/styles/Button.scss';
 import Table from './components/styles/Table.module.scss'
 
-import Card from './components/Card';
+//import Card from './components/Card';
 import Button from './components/Button';
 import Aside from './components/Aside-menu';
 import TableWords from './components/TableWords';
@@ -26,7 +26,7 @@ class App extends React.Component {
       {/* <Card url={photo} /> */}
 
       <table className={Table.table}>
-      <thead>
+      <thead className={Table.thead}>
         <tr>
         <th>Level</th>
         <th>English</th>

@@ -7,8 +7,16 @@
 .table td {
   border: 1px solid black;
 }
+.table tr:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
+}
 
 .center__flex {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.thead:hover > tr {
+  background-color: rgb(237, 189, 189);
 }/*# sourceMappingURL=Table.module.css.map */

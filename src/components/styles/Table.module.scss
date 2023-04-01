@@ -7,9 +7,20 @@
     td {
         border: 1px solid black;
     }
+
+    tr:hover {
+        background-color: antiquewhite;
+        cursor: pointer;
+    }
 }
 
 .center__flex {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.thead {
+    &:hover>tr {
+        background-color: rgb(237, 189, 189);
+    }
 }

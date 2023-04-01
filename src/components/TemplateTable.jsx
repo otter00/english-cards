@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import Button from './Button';
 import TableAppearance from './styles/Table.module.scss'
+import TableButton from './styles/TableButton.module.scss'
+import cn from 'classnames';
+
+let buttonEdit = cn([`${TableButton.buttonEdit}`, `${TableButton.generalButton}`]);
+let buttonSave = cn([`${TableButton.buttonSave}`, `${TableButton.generalButton}`]);
+let buttonDelete = cn([`${TableButton.buttonDelete}`, `${TableButton.generalButton}`]);
 
 export default class Template extends React.Component {
     render() {
@@ -13,9 +19,9 @@ export default class Template extends React.Component {
             <td><span className={TableAppearance.center__flex}>{russian}</span></td>
             <td>
                 <div className={TableAppearance.center__flex}>
-                    <Button name={'Edit'}></Button>
-                    <Button name={'Save'}></Button>
-                    <Button name={'Delete'}></Button>
+                    <input className={buttonEdit} type='button' value={'Edit'}/>
+                    <input className={buttonSave} type='button' value={'Save'}/>
+                    <input className={buttonDelete} type='button' value={'Delete'}/>
                 </div>
             </td>
         </tr>
