@@ -4,6 +4,7 @@
     @include FlexCenter;
     align-items: center;
     background-color: rgb(150, 82, 150);
+    border: none;
 
     @include BthRoundRadius;
     @include ButtonFont;
@@ -11,4 +12,8 @@
     margin: auto;
     width: 7em;
     height: 2em;
+
+    &:hover {
+        @include HoverShadow;
+    }
 }

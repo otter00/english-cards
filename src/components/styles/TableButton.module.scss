@@ -2,14 +2,18 @@
 
 .buttonSave {
     background-color: greenyellow;
+    @include ButtonFont;
+    color: black;
 }
 
 .buttonEdit {
     background-color: orange;
+    @include ButtonFont;
 }
 
 .buttonDelete {
     background-color: red;
+    @include ButtonFont;
 }
 
 .buttonTranslate {
@@ -21,14 +25,13 @@
 }
 
 .generalButton {
-    border: 1px solid rgb(72, 72, 72);
+    border: none;
     @include BthRoundRadius;
     width: 7em;
     height: 3em;
 
     &:hover {
-        box-shadow: 2px 2px 2px rgb(113, 113, 113);
-        transition: 200ms;
+        @include HoverShadow;
         cursor: pointer;
     }
 }
