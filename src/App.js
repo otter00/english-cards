@@ -8,7 +8,6 @@ import Table from './components/styles/Table.module.scss';
 import TableButtons from './components/styles/TableButton.module.scss';
 // import JSON
 import Words from './components/Words';
-import CardWords from './components/CardWords';
 
 import Card from './components/Card';
 import Button from './components/Button';
@@ -21,17 +20,13 @@ const generalBtn = cn([`${ButtonStyle.button}`]);
 class App extends React.Component {
   render () {
     console.log(Words);
-    console.log(CardWords);
     return (
       <div className="body">
 
       <Aside />
       <Button className={generalBtn} name={'Previous'} />
 
-      <Card url={photo}
-        bold={CardWords.bold}
-        translation={CardWords.translation} 
-        />
+      <Card url={photo}/>
 
       {/* <table className={Table.table}>
       <thead className={Table.thead}>
