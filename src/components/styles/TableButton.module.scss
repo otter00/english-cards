@@ -1,3 +1,5 @@
+@import 'vars.scss';
+
 .buttonSave {
     background-color: greenyellow;
 }
@@ -13,16 +15,14 @@
 .buttonTranslate {
     background-color: rgb(31, 125, 255);
 
-    color: white;
-    font-weight: 500;
-    letter-spacing: 1.5px;
+    @include ButtonFont;
+
     margin-top: 5px;
 }
 
 .generalButton {
-    border-radius: 20px;
     border: 1px solid rgb(72, 72, 72);
-
+    @include BthRoundRadius;
     width: 7em;
     height: 3em;
 

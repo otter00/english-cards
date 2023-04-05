@@ -9,7 +9,7 @@ const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.ge
 
 export default function Card(props) {
     const [isTranslate, setIsTranslate] = useState(false);
-    const [englishWord, setEnglishWord] = useState(props.english);
+    //const [englishWord, setEnglishWord] = useState(props.english);
 
     const handleTranslate = () => {
         setIsTranslate(!isTranslate);
@@ -20,6 +20,8 @@ export default function Card(props) {
     //     setEnglishWord('word translation')
     // };
 
+    console.log(props.translation)
+
     return (
         <div className="cards__container">
 
@@ -29,10 +31,10 @@ export default function Card(props) {
             </div>
 
             <div className="card__word">
-                <span className="bold__word">Bold word</span>
+                <span className="bold__word">{props.bold}</span>
 
                 {isTranslate ? (
-                        <span className="word__translation">Word translation</span>
+                        <span className="word__translation">{props.translation}</span>
                   ) : (
                     <span className="word__translation-button">
                     <Button className={buttonTranslate} name={'Translate'} function={handleTranslate} />

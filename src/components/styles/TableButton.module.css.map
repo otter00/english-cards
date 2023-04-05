@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["TableButton.module.scss"],"names":[],"mappings":"AAAA;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EAEA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EAEA;EACA;;AAEA;EACI;EACA;EACA","file":"TableButton.module.css"}
+{"version":3,"sourceRoot":"","sources":["TableButton.module.scss","vars.scss"],"names":[],"mappings":"AAEA;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;ECdA;EACA;EACA;EDgBA;;;AAGJ;EACI;EChBA;EDkBA;EACA;;AAEA;EACI;EACA;EACA","file":"TableButton.module.css"}

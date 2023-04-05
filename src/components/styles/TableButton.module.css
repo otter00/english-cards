@@ -19,8 +19,8 @@
 }
 
 .generalButton {
-  border-radius: 20px;
   border: 1px solid rgb(72, 72, 72);
+  border-radius: 20px;
   width: 7em;
   height: 3em;
 }

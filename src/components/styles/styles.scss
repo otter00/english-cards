@@ -1,3 +1,5 @@
+@import 'vars.scss';
+
 .cards__container {
     margin: auto;
 
@@ -15,8 +17,7 @@
         .bold__word,
         .word__translation,
         .word__translation-button {
-            display: flex;
-            justify-content: center;
+            @include FlexCenter;
         }
 
         .bold__word {

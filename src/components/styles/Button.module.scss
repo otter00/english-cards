@@ -1,10 +1,14 @@
+@import 'vars.scss';
+
 .button {
-    display: flex;
-    flex-direction: column;
+    @include FlexCenter;
+    align-items: center;
+    background-color: rgb(150, 82, 150);
+
+    @include BthRoundRadius;
+    @include ButtonFont;
 
     margin: auto;
-}
-
-.isClicked {
-    display: none;
+    width: 7em;
+    height: 2em;
 }
