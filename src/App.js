@@ -5,7 +5,7 @@ import './components/styles/styles.scss';
 import ButtonStyle from './components/styles/Button.module.scss';
 import Table from './components/styles/Table.module.scss'
 
-//import Card from './components/Card';
+import Card from './components/Card';
 import Button from './components/Button';
 import Aside from './components/Aside-menu';
 import TableWords from './components/TableWords';
@@ -23,9 +23,9 @@ class App extends React.Component {
 
       <Aside />
       <Button className={ButtonStyle.button} name={'Previous'} />
-      {/* <Card url={photo} /> */}
+      <Card url={photo} />
 
-      <table className={Table.table}>
+      {/* <table className={Table.table}>
       <thead className={Table.thead}>
         <tr>
         <th>Level</th>
@@ -36,7 +36,7 @@ class App extends React.Component {
       </thead>
       <TableWords>
       </TableWords>
-    </table>
+    </table> */}
 
       <Button className={ButtonStyle.button} name={'Next'}/>
 

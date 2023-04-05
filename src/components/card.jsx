@@ -1,7 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import cn from 'classnames';
 import './styles/styles.scss';
 
-function Card(props) {
+import Button from './Button';
+import TableButton from './styles/TableButton.module.scss'
+
+const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.generalButton}`]);
+
+export default function Card(props) {
+    const [isTranslate, setIsTranslate] = useState(false);
+    const [englishWord, setEnglishWord] = useState(props.english);
+
+    const handleTranslate = () => {
+        setIsTranslate(!isTranslate);
+    };
+    
+    // const handleCancelTranslate = () => {
+    //     setIsTranslate(!isTranslate);
+    //     setEnglishWord('word translation')
+    // };
+
     return (
         <div className="cards__container">
 
@@ -12,12 +30,19 @@ function Card(props) {
 
             <div className="card__word">
                 <span className="bold__word">Bold word</span>
-                <span className="word__translation">Word translation</span>
+
+                {isTranslate ? (
+                        <span className="word__translation">Word translation</span>
+                  ) : (
+                    <span className="word__translation-button">
+                    <Button className={buttonTranslate} name={'Translate'} function={handleTranslate} />
+                    </span>
+                  )}
+
             </div>
+
         </section>
 
     </div>
     );
 }
-
-export default Card;
