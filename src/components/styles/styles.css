@@ -11,7 +11,8 @@
   padding-top: 5%;
 }
 .cards__container .card__word .bold__word,
-.cards__container .card__word .word__translation {
+.cards__container .card__word .word__translation,
+.cards__container .card__word .word__translation-button {
   display: flex;
   justify-content: center;
 }
