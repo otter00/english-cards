@@ -1,7 +1,12 @@
 @import 'vars.scss';
 
 .cards__container {
-    margin: auto;
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+
+    .card__content {
+        margin: auto;
+    }
 
     img {
         width: 550px;

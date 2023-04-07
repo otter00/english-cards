@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import cn from 'classnames';
 import './styles/styles.scss';
 
+import ButtonStyle from './styles/Button.module.scss';
 import Button from './Button';
 import TableButton from './styles/TableButton.module.scss';
 import CardWords from './CardWords';
+
+const generalBtn = cn([`${ButtonStyle.button}`]);
 
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.generalButton}`]);
 
@@ -19,6 +22,8 @@ export default function Card(props) {
         CardWords.map((card) => 
         
         <div className="cards__container">
+
+        <Button className={generalBtn} name={'Previous'} />
 
         <section className="card__content">
             <div className="card-img__container">
@@ -39,6 +44,8 @@ export default function Card(props) {
             </div>
 
         </section>
+
+        <Button className={ButtonStyle.button} name={'Next'}/>
 
     </div>)
     );

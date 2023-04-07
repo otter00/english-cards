@@ -8,7 +8,7 @@ import Table from './components/styles/Table.module.scss';
 import TableButtons from './components/styles/TableButton.module.scss';
 // import JSON
 import Words from './components/Words';
-
+// import components
 import Card from './components/Card';
 import Button from './components/Button';
 import Aside from './components/Aside-menu';
@@ -16,7 +16,6 @@ import TableWords from './components/TableWords';
 
 import photo from './assets/WIc8yNAljtk.jpg';
 
-const generalBtn = cn([`${ButtonStyle.button}`]);
 class App extends React.Component {
   render () {
     console.log(Words);
@@ -24,9 +23,9 @@ class App extends React.Component {
       <div className="body">
 
       <Aside />
-      <Button className={generalBtn} name={'Previous'} />
 
-      <Card url={photo}/>
+      <Card 
+      url={photo}/>
 
       {/* <table className={Table.table}>
       <thead className={Table.thead}>
@@ -40,8 +39,6 @@ class App extends React.Component {
       <TableWords>
       </TableWords>
     </table> */}
-
-      <Button className={ButtonStyle.button} name={'Next'}/>
 
       </div>
     )
