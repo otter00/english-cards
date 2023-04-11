@@ -26,11 +26,10 @@ export default function Card(props) {
         <Button className={generalBtn} name={'Previous'} />
 
         <section className="card__content">
-            <div className="card-img__container">
-                <img src={props.url} alt="card__img" />
-            </div>
 
             <div className="card__word">
+                <span className="card__topic">{card.topic}</span>
+
                 <span className="bold__word">{card.bold}</span>
 
                 {isTranslate ? (

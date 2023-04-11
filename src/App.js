@@ -23,9 +23,7 @@ class App extends React.Component {
       <div className="body">
 
       <Aside />
-
-      <Card 
-      url={photo}/>
+      <Card />
 
       {/* <table className={Table.table}>
       <thead className={Table.thead}>

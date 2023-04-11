@@ -8,21 +8,33 @@
         margin: auto;
     }
 
-    img {
-        width: 550px;
-        height: 350px;
-    }
+    // img {
+    //     width: 550px;
+    //     height: 350px;
+    // }
 
     .card__word {
+        border: 1px solid rgb(153, 153, 153);
+        border-radius: 65px;
+        background-color: beige;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+
+        width: 350px;
+        height: 450px;
 
         padding-top: 5%;
 
+        .card__topic,
         .bold__word,
         .word__translation,
         .word__translation-button {
             @include FlexCenter;
+        }
+
+        .card__topic {
+            font-size: 20px;
         }
 
         .bold__word {
@@ -34,6 +46,10 @@
         .word__translation {
             font-size: 14px;
             font-style: italic;
+        }
+
+        &:hover {
+            @include HoverShadow;
         }
     }
 }
