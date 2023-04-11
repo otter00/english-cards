@@ -2,15 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(150, 82, 150);
+  background-color: rgb(255, 123, 0);
   border: none;
   border-radius: 20px;
-  color: white;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1.5px;
+  color: white;
+  text-transform: uppercase;
   margin: auto;
-  width: 7em;
-  height: 2em;
+  width: 9em;
+  height: 3em;
 }
 .button:hover {
   box-shadow: 2px 2px 2px rgb(113, 113, 113);

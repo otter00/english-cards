@@ -1,9 +1,6 @@
 .cards__container {
-  display: grid;
-  grid-template-columns: 15% 1fr 15%;
-}
-.cards__container .card__content {
-  margin: auto;
+  margin-top: 15vh;
+  display: flex;
 }
 .cards__container .card__word {
   border: 1px solid rgb(153, 153, 153);

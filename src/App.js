@@ -11,7 +11,8 @@ import Words from './components/Words';
 // import components
 import Card from './components/Card';
 import Button from './components/Button';
-import Aside from './components/Aside-menu';
+import Header from './components/Header';
+//import Aside from './components/Aside-menu';
 import TableWords from './components/TableWords';
 
 import photo from './assets/WIc8yNAljtk.jpg';
@@ -22,10 +23,12 @@ class App extends React.Component {
     return (
       <div className="body">
 
-      <Aside />
+        <Header/>
+
+      {/* <Aside /> */}
       <Card />
 
-      {/* <table className={Table.table}>
+      <table className={Table.table}>
       <thead className={Table.thead}>
         <tr>
         <th>Level</th>
@@ -36,7 +39,7 @@ class App extends React.Component {
       </thead>
       <TableWords>
       </TableWords>
-    </table> */}
+    </table>
 
       </div>
     )

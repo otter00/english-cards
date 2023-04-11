@@ -8,12 +8,13 @@ body {
 }
 
 .body {
-  display: grid;
-  grid-template-columns: 5% 1fr;
-  grid-template-rows: 1fr;
-
+  background-image: url("./assets/AABKRHL.jpg");
+  display: flex;
+  flex-direction: column;
   width: 100vw;
 	height: 100vh;
+
+  overflow-x: hidden;
 }
 
 code {
