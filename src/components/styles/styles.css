@@ -5,20 +5,28 @@
 .cards__container .card__content {
   margin: auto;
 }
-.cards__container img {
-  width: 550px;
-  height: 350px;
-}
 .cards__container .card__word {
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 65px;
+  background-color: beige;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  height: 450px;
   padding-top: 5%;
 }
+.cards__container .card__word .card__topic,
+.cards__container .card__word .card__level,
 .cards__container .card__word .bold__word,
 .cards__container .card__word .word__translation,
 .cards__container .card__word .word__translation-button {
   display: flex;
   justify-content: center;
+}
+.cards__container .card__word .card__topic,
+.cards__container .card__word .card__level {
+  font-size: 20px;
 }
 .cards__container .card__word .bold__word {
   font-size: 24px;
@@ -28,4 +36,8 @@
 .cards__container .card__word .word__translation {
   font-size: 14px;
   font-style: italic;
+}
+.cards__container .card__word:hover {
+  box-shadow: 2px 2px 2px rgb(113, 113, 113);
+  transition: 200ms;
 }/*# sourceMappingURL=styles.css.map */

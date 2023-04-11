@@ -27,13 +27,15 @@
         padding-top: 5%;
 
         .card__topic,
+        .card__level,
         .bold__word,
         .word__translation,
         .word__translation-button {
             @include FlexCenter;
         }
 
-        .card__topic {
+        .card__topic,
+        .card__level {
             font-size: 20px;
         }
 

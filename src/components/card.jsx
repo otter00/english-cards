@@ -28,6 +28,8 @@ export default function Card(props) {
         <section className="card__content">
 
             <div className="card__word">
+                <span className="card__level">{card.level}</span>
+
                 <span className="card__topic">{card.topic}</span>
 
                 <span className="bold__word">{card.bold}</span>
