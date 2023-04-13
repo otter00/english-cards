@@ -12,10 +12,7 @@ import Words from './components/Words';
 import Card from './components/Card';
 import Button from './components/Button';
 import Header from './components/Header';
-//import Aside from './components/Aside-menu';
 import TableWords from './components/TableWords';
-
-import photo from './assets/WIc8yNAljtk.jpg';
 
 class App extends React.Component {
   render () {

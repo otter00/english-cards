@@ -1,13 +1,11 @@
 @import 'vars.scss';
 
 .cards__container {
-    margin-top: 15vh;
-    display: flex;
+    margin: auto;
 
-    // img {
-    //     width: 550px;
-    //     height: 350px;
-    // }
+    .card__content {
+        margin: 10vh 0 5vh 0;
+    }
 
     .card__word {
         border: 1px solid rgb(153, 153, 153);

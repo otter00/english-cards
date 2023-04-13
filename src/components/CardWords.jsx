@@ -1,7 +1,21 @@
-export default [{
+let CardWordsJson = `[{
     "id": 1,
-    "topic":"topic",
+    "topic":"family",
     "level": "easy",
-    "bold" : "bold word",
-    "translation" : "word translation",
-}];
+    "english": "mother",
+    "translation": "мама"
+}, {
+    "id": 2,
+    "topic":"family",
+    "level": "easy",
+    "english": "father",
+    "translation": "папа"
+}, {
+    "id": 3,
+    "topic":"family",
+    "level": "easy",
+    "english": "sister",
+    "translation": "сестра"
+}]`;
+
+export default CardWordsJson;

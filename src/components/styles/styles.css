@@ -1,6 +1,8 @@
 .cards__container {
-  margin-top: 15vh;
-  display: flex;
+  margin: auto;
+}
+.cards__container .card__content {
+  margin: 10vh 0 5vh 0;
 }
 .cards__container .card__word {
   border: 1px solid rgb(153, 153, 153);
@@ -35,6 +37,6 @@
   font-style: italic;
 }
 .cards__container .card__word:hover {
-  box-shadow: 2px 2px 2px rgb(113, 113, 113);
+  box-shadow: 2px 2px 2px rgb(244, 244, 244);
   transition: 200ms;
 }/*# sourceMappingURL=styles.css.map */
