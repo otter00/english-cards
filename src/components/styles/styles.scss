@@ -40,8 +40,10 @@
         }
 
         .word__translation {
-            font-size: 14px;
+            font-size: 24px;
             font-style: italic;
+            font-weight: 700;
+            color: rgb(228, 118, 0);
         }
 
         &:hover {

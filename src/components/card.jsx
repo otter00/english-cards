@@ -15,7 +15,6 @@ const generalBtn = cn([`${ButtonStyle.button}`]);
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.generalButton}`]);
 
 export default function Card(props) {
-    const [cardIndex, setCardIndex] = useState(0);
     const [isTranslate, setIsTranslate] = useState(false);
 
     const handleTranslate = () => {
@@ -34,17 +33,18 @@ export default function Card(props) {
                 <span className="card__level">{card.level}</span>
                 <span className="card__topic">{card.topic}</span>
                 <span className="bold__word">{card.english}</span>
-                {isTranslate ? (
-                        <span className="word__translation">{card.translation}</span>
-                  ) : (
+                {isTranslate && (
+                        <span onClick={handleTranslate} className="word__translation">{card.translation}</span>
+                )} 
+                {!isTranslate && (
                     <span className="word__translation-button">
                     <Button className={buttonTranslate} name={'Translate'} function={handleTranslate} />
                     </span>
-                  )}
+                )}
             </div>
         </section>
 
-        <Button className={ButtonStyle.button} name={'Next'}/>
+        <Button onClick={props.nextCard} className={ButtonStyle.button} name={'Next'}/>
     </div>)
     );
 }
