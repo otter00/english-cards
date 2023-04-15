@@ -33,8 +33,10 @@
   text-transform: uppercase;
 }
 .cards__container .card__word .word__translation {
-  font-size: 14px;
+  font-size: 24px;
   font-style: italic;
+  font-weight: 700;
+  color: rgb(228, 118, 0);
 }
 .cards__container .card__word:hover {
   box-shadow: 2px 2px 2px rgb(244, 244, 244);

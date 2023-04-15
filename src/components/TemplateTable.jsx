@@ -1,6 +1,5 @@
 import React,  { useState } from 'react';
 import Button from './Button';
-import ButtonStyle from './styles/Button.module.scss'
 import TableAppearance from './styles/Table.module.scss'
 import TableButton from './styles/TableButton.module.scss'
 import cn from 'classnames';

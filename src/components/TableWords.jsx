@@ -1,13 +1,13 @@
-import Words from './Words';
+import CardWordsJson from './CardWords';
 import Template from './TemplateTable';
 import React, { Component } from 'react';
-//import cn from 'classnames';
 
 function TableWords() {
-    console.log(Words);
+    let CardWords = JSON.parse(CardWordsJson);
+    console.log(CardWords);
     return (
         <tbody> {
-            Words.map((word, id) =>
+            CardWords.map((word, id) =>
                 <Template
                 key={id}
                 level={word.level}

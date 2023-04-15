@@ -7,13 +7,13 @@
 }
 
 .buttonEdit {
-  background-color: orange;
+  background-color: rgb(255, 155, 54);
   color: white;
   font-weight: 500;
   letter-spacing: 1.5px;
 }
 
-.buttonDelete {
+.buttonCansel {
   background-color: red;
   color: white;
   font-weight: 500;
