@@ -3,7 +3,7 @@ import './App.css';
 import './components/styles/styles.scss';
 import Table from './components/styles/Table.module.scss';
 // import components
-import Card from './components/Card';
+import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
 
@@ -12,10 +12,8 @@ class App extends React.Component {
     return (
       <div className="body">
 
-        <Header/>
-
-      {/* <Aside /> */}
-      <Card />
+      <Header/>
+      <CardSlider />
 
       <table className={Table.table}>
       <thead className={Table.thead}>

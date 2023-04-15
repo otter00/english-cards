@@ -16,13 +16,14 @@ const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.ge
 
 export default function Card(props) {
     const [isTranslate, setIsTranslate] = useState(false);
+    let { level, topic, english, russian } = props;
 
     const handleTranslate = () => {
         setIsTranslate(!isTranslate);
     };
 
     return (
-        CardWords.map((card) => 
+        // CardWords.map((card) => 
         
         <div className="cards__container">
 
@@ -30,11 +31,11 @@ export default function Card(props) {
 
         <section className="card__content">
             <div className="card__word">
-                <span className="card__level">{card.level}</span>
-                <span className="card__topic">{card.topic}</span>
-                <span className="bold__word">{card.english}</span>
+                <span className="card__level">{level}</span>
+                <span className="card__topic">{topic}</span>
+                <span className="bold__word">{english}</span>
                 {isTranslate && (
-                        <span onClick={handleTranslate} className="word__translation">{card.translation}</span>
+                        <span onClick={handleTranslate} className="word__translation">{russian}</span>
                 )} 
                 {!isTranslate && (
                     <span className="word__translation-button">
@@ -43,8 +44,10 @@ export default function Card(props) {
                 )}
             </div>
         </section>
-
-        <Button onClick={props.nextCard} className={ButtonStyle.button} name={'Next'}/>
+        
+        <div onClick={props.nextCard}>
+        <Button className={ButtonStyle.button} name={'Next'}/>
+        </div>
     </div>)
-    );
+    // );
 }
