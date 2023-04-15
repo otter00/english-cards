@@ -10,16 +10,16 @@ let buttonSave = cn([`${TableButton.buttonSave}`, ` ${TableButton.generalButton}
 let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalButton}`]);
 
 export default function Template(props) {
-    let { english, russian } = props;
+    let { english, russian, level } = props;
     const [isEditing, setIsEditing] = useState(false);
-    const [word, setWord] = useState({english, russian});
+    const [word, setWord] = useState({english, russian, level});
 
     const handleEdit = () => {
         setIsEditing(!isEditing);
     };
     
     const handleCancelEdit = () => {
-        setWord({ english, russian });
+        setWord({ english, russian, level });
         setIsEditing(!isEditing);
     };
   
@@ -27,10 +27,19 @@ export default function Template(props) {
       setIsEditing(!isEditing);
     }
 
+    const onChangeLevel = (event) => {
+      setWord({
+        english: word.english,
+        russian: word.russian,
+        level: event.target.value,
+      });
+    }
+
     const onChangeEnglish = (event) => {
       setWord({
         english: event.target.value,
         russian: word.russian,
+        level: word.level,
       });
     }
   
@@ -38,12 +47,23 @@ export default function Template(props) {
       setWord({
         english: word.english,
         russian: event.target.value,
+        level: word.level,
       });
     }
 
         return (
         <tr>
-            <td><span className={TableAppearance.center__flex}>{props.level}</span></td>
+            <td>
+              {isEditing? (
+                    <input
+                    onChange={onChangeLevel}
+                    type="text"
+                    value={word.level}
+                  />
+              ) : ( 
+                <span className={TableAppearance.center__flex}>{word.level}</span>
+                )}
+              </td>
             <td>
               {isEditing ? (
                     <input
@@ -52,7 +72,7 @@ export default function Template(props) {
                       value={word.english}
                     />
                   ) : (
-                    <span className={TableAppearance.center__flex}>{english}</span>
+                    <span className={TableAppearance.center__flex}>{word.english}</span>
                   )}
             </td>
             <td>
@@ -63,7 +83,7 @@ export default function Template(props) {
                     value={word.russian}
                   />
             ) : (
-                  <span className={TableAppearance.center__flex}>{russian}</span>
+                  <span className={TableAppearance.center__flex}>{word.russian}</span>
             )}
             </td>
             <td>
