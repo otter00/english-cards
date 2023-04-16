@@ -27,8 +27,6 @@ export default function Card(props) {
         
         <div className="cards__container">
 
-        {/* <Button className={generalBtn} name={'Previous'} /> */}
-
         <section className="card__content">
             <div className="card__word">
                 <span className="card__level">{level}</span>
@@ -44,9 +42,15 @@ export default function Card(props) {
                 )}
             </div>
         </section>
+
+        <div className={ButtonStyle.buttons__container}>
+        <div onClick={props.previousCard}>
+            <Button className={ButtonStyle.button} name={'Previous'}/>
+        </div>
         
         <div onClick={props.nextCard}>
         <Button className={ButtonStyle.button} name={'Next'}/>
+        </div>
         </div>
     </div>)
     // );
