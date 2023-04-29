@@ -6,13 +6,14 @@ import Table from './components/styles/Table.module.scss';
 import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
+import logo from './assets/logo.png';
 
 class App extends React.Component {
   render () {
     return (
       <div className="body">
 
-      <Header/>
+      <Header />
       <CardSlider />
 
       <table className={Table.table}>

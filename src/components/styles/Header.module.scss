@@ -18,9 +18,18 @@ li {
     .header__list {
         display: flex;
         justify-content: space-around;
+        align-items: center;
 
         .header__item {
             color: white;
+        }
+
+        img {
+            width: 6%;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

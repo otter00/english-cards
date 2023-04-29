@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './styles/Header.module.scss';
+import logo from './../assets/logo.png';
 
 export default class HeaderMain extends React.Component{
     render () {
@@ -8,9 +9,9 @@ export default class HeaderMain extends React.Component{
                 <div>
                     <nav className={Header.header__menu}>
                         <ul className={Header.header__list}>
-                            <li className={Header.header__item}>Words</li>
-                            <li className={Header.header__item}>Learn Cards</li>
-                            <li className={Header.header__item}>About</li>
+                            <li className={Header.header__item}>Home Page</li>
+                            <li className={Header.header__item}>Learn Words</li>
+                            <img src={logo} alt='logo'></img>
                         </ul>
                     </nav>
                 </div>
