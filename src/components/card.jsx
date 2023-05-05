@@ -22,9 +22,7 @@ export default function Card(props) {
         setIsTranslate(!isTranslate);
     };
 
-    return (
-        // CardWords.map((card) => 
-        
+    return (        
         <div className="cards__container">
 
         <section className="card__content">

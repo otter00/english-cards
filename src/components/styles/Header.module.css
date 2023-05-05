@@ -10,8 +10,26 @@ li:hover {
   text-decoration: underline;
 }
 
+.home__link {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: underline;
+  color: #FFF;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .header__container {
-  height: 20vh;
+  height: 11vh;
   background-color: rgba(255, 123, 0, 0.5);
 }
 .header__container .header__list {
@@ -23,7 +41,7 @@ li:hover {
   color: white;
 }
 .header__container .header__list img {
-  width: 6%;
+  width: 60%;
 }
 .header__container .header__list img:hover {
   cursor: pointer;
