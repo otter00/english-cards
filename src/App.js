@@ -8,6 +8,7 @@ import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
 import Home from './components/Home';
+import HomePageStyles from './components/styles/HomePage.module.scss';
 
 import {
   BrowserRouter as Router,
@@ -38,7 +39,11 @@ class App extends React.Component {
 }
 
 function NoMatch() {
-  return 'No match';
+  return (
+    <Link to="https://pets.byspotify.com/404" relative="path">
+      <h1 className={HomePageStyles.nofound}>No match, unfortunately...</h1>
+    </Link>
+  );
 }
 
 function HomePage() {
