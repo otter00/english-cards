@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import './styles/styles.scss';
 import styled from 'styled-components';
 import HomePageStyles from './styles/HomePage.module.scss';

@@ -89,11 +89,11 @@ export default function Template(props) {
                 <div className={TableAppearance.center__flex}>
                 {isEditing ? (
                     <>
-                      <Button className={buttonSave} function={save} name={'Save'}/>
-                      <Button className={buttonCansel} name={'Cancel'} function={handleCancelEdit}/>
+                      <Button className={buttonSave} onClick={save} name={'Save'}/>
+                      <Button className={buttonCansel} name={'Cancel'} onClick={handleCancelEdit}/>
                     </>
                   ) : (
-                    <Button className={buttonEdit} name={'Edit'} function={handleEdit} />
+                    <Button className={buttonEdit} name={'Edit'} onClick={handleEdit} />
                   )}
                 </div>
             </td>

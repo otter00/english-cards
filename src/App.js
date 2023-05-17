@@ -40,9 +40,9 @@ class App extends React.Component {
 
 function NoMatch() {
   return (
-    <Link to="https://pets.byspotify.com/404" relative="path">
+    <a href="https://pets.byspotify.com/404">
       <h1 className={HomePageStyles.nofound}>No match, unfortunately...</h1>
-    </Link>
+    </a>
   );
 }
 

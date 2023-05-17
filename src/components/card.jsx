@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import cn from 'classnames';
 import './styles/styles.scss';
 
@@ -16,12 +16,19 @@ const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.ge
 
 export default function Card(props) {
     const [isTranslate, setIsTranslate] = useState(false);
-    let { level, topic, english, russian } = props;
+    const {word, onClickTranslate} = props;
+    // const {counttransled} = useSelector(state => state.counttransled)
+    const {level, topic, english, russian, id} = word;
 
-    const handleTranslate = () => {
+    const onClickButton = () => {
+        onClickTranslate();
         setIsTranslate(!isTranslate);
     };
 
+    useEffect(() => {
+        setIsTranslate(false);
+    }, [id]);
+    
     return (        
         <div className="cards__container">
 
@@ -31,11 +38,11 @@ export default function Card(props) {
                 <span className="card__topic">{topic}</span>
                 <span className="bold__word">{english}</span>
                 {isTranslate && (
-                        <span onClick={handleTranslate} className="word__translation">{russian}</span>
+                        <span onClick={onClickButton} className="word__translation">{russian}</span>
                 )} 
                 {!isTranslate && (
                     <span className="word__translation-button">
-                    <Button className={buttonTranslate} name={'Translate'} function={handleTranslate} />
+                    <Button className={buttonTranslate} name={'Translate'} onClick={onClickButton} />
                     </span>
                 )}
             </div>
