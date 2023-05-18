@@ -11,8 +11,7 @@ export default function EndOfCard(props) {
 
         <section className="card__content">
             <div className="card__word">
-                <div>countTranslated: {props.countTranslated}</div>
-                <span className="card__level">You've finished</span>
+                <span className="card__level">You've learned {props.countTranslated} words</span>
                 <span className="bold__word">Congrats!</span>
             </div>
         </section>
