@@ -10,9 +10,7 @@ import CardWordsJson from './CardWords';
 let CardWords = JSON.parse(CardWordsJson);
 console.log(CardWords); //array
 
-const generalBtn = cn([`${ButtonStyle.button}`]);
-
-const buttonTranslate = cn([`${TableButton.buttonTranslate}`, ` ${TableButton.generalButton}`]);
+const buttonTranslate = cn([`${TableButton.buttonTranslate}`, `${ButtonStyle.button}`]);
 
 export default function Card(props) {
     const [isTranslate, setIsTranslate] = useState(false);
@@ -57,6 +55,6 @@ export default function Card(props) {
         <Button className={ButtonStyle.button} name={'Next'}/>
         </div>
         </div>
-    </div>)
-    // );
+    </div>
+    )
 }

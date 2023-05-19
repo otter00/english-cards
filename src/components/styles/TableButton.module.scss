@@ -17,11 +17,13 @@
 }
 
 .buttonTranslate {
-    background-color: rgba(255, 123, 0, 1);
-
-    @include ButtonFont;
-
+    @include BthRoundRadius;
     margin-top: 5px;
+
+    &:hover {
+        @include HoverTranslateShadow;
+        cursor: pointer;
+    }
 }
 
 .generalButton {
