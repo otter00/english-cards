@@ -37,11 +37,11 @@ export default function Card(props) {
                 <span className="card__topic">{topic}</span>
                 <span className="bold__word">{english}</span>
                 {isTranslate && (
-                        <span onClick={onClickButton} className="word__translation" elemFocused={props.elemFocused}>{russian}</span>
+                        <span onClick={onClickButton} className="word__translation">{russian}</span>
                 )} 
                 {!isTranslate && (
                     <span className="word__translation-button">
-                    <Button className={buttonTranslate} name={'Translate'} onClick={onClickButton} elemFocused={props.elemFocused} />
+                    <Button className={buttonTranslate} name={'Translate'} onClick={onClickButton} />
                     </span>
                 )}
             </div>

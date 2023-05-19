@@ -46,14 +46,19 @@ export default function CardSlider(props) {
                 {cardIndex < words.length && (
                     <>
                         <Card 
-                        elemFocused={elemFocused}
-                        previousCard={previousCard} onClickTranslate={onClickTranslate} word={words[cardIndex]} nextCard={nextCard} />
+                        previousCard={previousCard} 
+                        onClickTranslate={onClickTranslate} 
+                        word={words[cardIndex]} 
+                        nextCard={nextCard}
+                        elemFocused={elemFocused} />
                         {cardIndex + 1} / {words.length}
                     </>
                     )}
                 {cardIndex === words.length && (
                     <>
-                        <FinalCard startSlider={startSlider} countTranslated={countTranslated}/>
+                        <FinalCard 
+                        startSlider={startSlider} 
+                        countTranslated={countTranslated}/>
                     </>
                     )}
             </>
