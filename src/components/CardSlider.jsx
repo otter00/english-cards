@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import './styles/styles.scss';
 // import components
 import Card from './Card';
@@ -10,8 +10,10 @@ let words = JSON.parse(JsonWords);
 export default function CardSlider(props) {
     const [cardIndex, setCardIndex] = useState(0);
     const [idxWordsTranslated, setIdxWordsTranslated] = useState([]);
+    const elemFocused = useRef(null);
 
     function nextCard() {
+        elemFocused.current.focus();
         setCardIndex(cardIndex + 1);
     }
 
@@ -43,7 +45,9 @@ export default function CardSlider(props) {
             <>
                 {cardIndex < words.length && (
                     <>
-                        <Card previousCard={previousCard} onClickTranslate={onClickTranslate} word={words[cardIndex]} nextCard={nextCard} />
+                        <Card 
+                        elemFocused={elemFocused}
+                        previousCard={previousCard} onClickTranslate={onClickTranslate} word={words[cardIndex]} nextCard={nextCard} />
                         {cardIndex + 1} / {words.length}
                     </>
                     )}

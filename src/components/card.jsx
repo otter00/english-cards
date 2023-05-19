@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import cn from 'classnames';
 import './styles/styles.scss';
 
@@ -17,6 +17,7 @@ export default function Card(props) {
     const {word, onClickTranslate} = props;
     // const {counttransled} = useSelector(state => state.counttransled)
     const {level, topic, english, russian, id} = word;
+    //const elemFocused = useRef(null);
 
     const onClickButton = () => {
         onClickTranslate();
@@ -36,11 +37,11 @@ export default function Card(props) {
                 <span className="card__topic">{topic}</span>
                 <span className="bold__word">{english}</span>
                 {isTranslate && (
-                        <span onClick={onClickButton} className="word__translation">{russian}</span>
+                        <span onClick={onClickButton} className="word__translation" elemFocused={props.elemFocused}>{russian}</span>
                 )} 
                 {!isTranslate && (
                     <span className="word__translation-button">
-                    <Button className={buttonTranslate} name={'Translate'} onClick={onClickButton} />
+                    <Button className={buttonTranslate} name={'Translate'} onClick={onClickButton} elemFocused={props.elemFocused} />
                     </span>
                 )}
             </div>
