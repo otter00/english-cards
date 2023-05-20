@@ -29,6 +29,11 @@
   transition: 200ms;
   cursor: pointer;
 }
+.buttonTranslate:focus {
+  box-shadow: 0 10px 15px -5px rgba(235, 90, 18, 0.789), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: 200ms;
+  cursor: pointer;
+}
 
 .generalButton {
   border: none;

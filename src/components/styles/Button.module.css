@@ -17,6 +17,10 @@
   box-shadow: 2px 2px 2px rgb(244, 244, 244);
   transition: 200ms;
 }
+.button:focus {
+  box-shadow: 2px 2px 2px rgb(244, 244, 244);
+  transition: 200ms;
+}
 
 .buttons__container {
   display: flex;

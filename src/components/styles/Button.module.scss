@@ -18,6 +18,10 @@
     &:hover {
         @include HoverShadow;
     }
+
+    &:focus {
+        @include HoverShadow;
+    }
 }
 
 .buttons__container {
