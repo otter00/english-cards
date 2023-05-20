@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect, forwardRef} from 'react';
 import './styles/styles.scss';
 // import components
 import Card from './Card';
@@ -7,13 +7,15 @@ import JsonWords from "./CardWords";
 
 let words = JSON.parse(JsonWords);
 
-export default function CardSlider(props) {
+const CardSlider = () => {
     const [cardIndex, setCardIndex] = useState(0);
     const [idxWordsTranslated, setIdxWordsTranslated] = useState([]);
-    const elemFocused = useRef(null);
+    const buttonTranslateRef = useRef(null);
 
     function nextCard() {
-        elemFocused.current.focus();
+        if (buttonTranslateRef.current) {
+            buttonTranslateRef.current.focus();
+        }
         setCardIndex(cardIndex + 1);
     }
 
@@ -50,7 +52,8 @@ export default function CardSlider(props) {
                         onClickTranslate={onClickTranslate} 
                         word={words[cardIndex]} 
                         nextCard={nextCard}
-                        elemFocused={elemFocused} />
+                        ref={buttonTranslateRef}
+                        />
                         {cardIndex + 1} / {words.length}
                     </>
                     )}
@@ -66,3 +69,5 @@ export default function CardSlider(props) {
     }
     alert("Service is unavailable");
 }
+
+export default CardSlider;

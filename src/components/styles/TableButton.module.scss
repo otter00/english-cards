@@ -24,6 +24,11 @@
         @include HoverTranslateShadow;
         cursor: pointer;
     }
+
+    &:focus {
+        @include HoverTranslateShadow;
+        cursor: pointer;
+    }
 }
 
 .generalButton {

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, forwardRef} from 'react';
 import cn from 'classnames';
 import './styles/styles.scss';
 
@@ -12,12 +12,11 @@ console.log(CardWords); //array
 
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, `${ButtonStyle.button}`]);
 
-export default function Card(props) {
+const Card = forwardRef((props, ref) => {
     const [isTranslate, setIsTranslate] = useState(false);
     const {word, onClickTranslate} = props;
     // const {counttransled} = useSelector(state => state.counttransled)
     const {level, topic, english, russian, id} = word;
-    //const elemFocused = useRef(null);
 
     const onClickButton = () => {
         onClickTranslate();
@@ -27,8 +26,14 @@ export default function Card(props) {
     useEffect(() => {
         setIsTranslate(false);
     }, [id]);
+
+      useEffect(() => {
+    if (isTranslate && ref && ref.current) {
+      ref.current.focus();
+    }
+  }, [isTranslate, ref]);
     
-    return (        
+    return (     
         <div className="cards__container">
 
         <section className="card__content">
@@ -41,7 +46,11 @@ export default function Card(props) {
                 )} 
                 {!isTranslate && (
                     <span className="word__translation-button">
-                    <Button className={buttonTranslate} name={'Translate'} onClick={onClickButton} />
+                    <Button 
+                    className={buttonTranslate} 
+                    name={'Translate'} 
+                    onClick={onClickButton}
+                    ref={ref} />
                     </span>
                 )}
             </div>
@@ -58,4 +67,6 @@ export default function Card(props) {
         </div>
     </div>
     )
-}
+})
+
+export default Card;
