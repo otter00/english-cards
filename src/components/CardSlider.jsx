@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, forwardRef} from 'react';
+import React, {useState, useRef, useCallback} from 'react';
 import './styles/styles.scss';
 // import components
 import Card from './Card';
@@ -10,7 +10,13 @@ let words = JSON.parse(JsonWords);
 const CardSlider = () => {
     const [cardIndex, setCardIndex] = useState(0);
     const [idxWordsTranslated, setIdxWordsTranslated] = useState([]);
+    
     const buttonTranslateRef = useRef(null);
+
+    const setButtonTranslateRef = useCallback((node) => {
+    if (node) {
+        buttonTranslateRef.current = node;
+    }}, []);
 
     function nextCard() {
         if (buttonTranslateRef.current) {
@@ -52,7 +58,7 @@ const CardSlider = () => {
                         onClickTranslate={onClickTranslate} 
                         word={words[cardIndex]} 
                         nextCard={nextCard}
-                        ref={buttonTranslateRef}
+                        ref={setButtonTranslateRef}
                         />
                         {cardIndex + 1} / {words.length}
                     </>

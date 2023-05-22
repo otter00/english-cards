@@ -1,20 +1,19 @@
 import React from 'react';
 import './App.css';
 import './components/styles/styles.scss';
-import styled from 'styled-components';
 import Table from './components/styles/Table.module.scss';
+import HomePageStyles from './components/styles/HomePage.module.scss';
 // import components
 import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
 import Home from './components/Home';
-import HomePageStyles from './components/styles/HomePage.module.scss';
+
 
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 class App extends React.Component {
@@ -26,9 +25,9 @@ class App extends React.Component {
       <Header />
 
     <Routes>
-      <Route path="/table" element={<TableW />}></Route>
-      <Route path="/learn" element={<Learn />}></Route>
-      <Route path="/" element={<HomePage />}></Route>
+      <Route path="/table" element={<TableW />} />
+      <Route path="/learn" element={<Learn />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
 

@@ -1,10 +1,8 @@
 import React from 'react';
 import Header from './styles/Header.module.scss';
 import logo from './../assets/logo.png';
+
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
     Link
   } from "react-router-dom";
   

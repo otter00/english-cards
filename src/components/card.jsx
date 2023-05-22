@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, forwardRef} from 'react';
+import React, {useEffect, useState, useRef, forwardRef, useCallback} from 'react';
 import cn from 'classnames';
 import './styles/styles.scss';
 
@@ -12,7 +12,7 @@ console.log(CardWords); //array
 
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, `${ButtonStyle.button}`]);
 
-const Card = forwardRef((props, ref) => {
+const Card = React.forwardRef((props, setButtonTranslateRef) => {
     const [isTranslate, setIsTranslate] = useState(false);
     const {word, onClickTranslate} = props;
     // const {counttransled} = useSelector(state => state.counttransled)
@@ -27,11 +27,18 @@ const Card = forwardRef((props, ref) => {
         setIsTranslate(false);
     }, [id]);
 
+    // const buttonTranslateRef = useRef(null);
+
+    // const setButtonTranslateRef = useCallback((node) => {
+    // if (node) {
+    //     buttonTranslateRef.current = node;
+    // }}, []);
+
       useEffect(() => {
-    if (isTranslate && ref && ref.current) {
-      ref.current.focus();
+    if (isTranslate && setButtonTranslateRef && setButtonTranslateRef.current) {
+        setButtonTranslateRef.current.focus();
     }
-  }, [isTranslate, ref]);
+  }, [isTranslate, setButtonTranslateRef]);
     
     return (     
         <div className="cards__container">
@@ -50,7 +57,7 @@ const Card = forwardRef((props, ref) => {
                     className={buttonTranslate} 
                     name={'Translate'} 
                     onClick={onClickButton}
-                    ref={ref} />
+                    ref={setButtonTranslateRef} />
                     </span>
                 )}
             </div>

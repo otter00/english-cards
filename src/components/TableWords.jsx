@@ -1,6 +1,6 @@
 import CardWordsJson from './CardWords';
 import Template from './TemplateTable';
-import React, { Component } from 'react';
+import React from 'react';
 
 function TableWords() {
     let CardWords = JSON.parse(CardWordsJson);
