@@ -23,29 +23,42 @@ export default function Template(props) {
     };
   
     const save = () => {
+        if (word.english.trim() === '' || 
+        word.russian.trim() === '' || 
+        word.level.trim() === '') {
+          alert('Please enter a value');
+        return;
+        }
+
       setIsEditing(!isEditing);
     }
 
     const onChangeLevel = (event) => {
+      const value = event.target.value;
+
       setWord({
         english: word.english,
         russian: word.russian,
-        level: event.target.value,
+        level: value,
       });
     }
 
     const onChangeEnglish = (event) => {
+      const value = event.target.value;
+
       setWord({
-        english: event.target.value,
+        english: value,
         russian: word.russian,
         level: word.level,
       });
     }
   
     const onChangeRussian = (event) => {
+      const value = event.target.value;
+
       setWord({
         english: word.english,
-        russian: event.target.value,
+        russian: value,
         level: word.level,
       });
     }

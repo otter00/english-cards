@@ -12,7 +12,7 @@ console.log(CardWords); //array
 
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, `${ButtonStyle.button}`]);
 
-const Card = React.forwardRef((props, setButtonTranslateRef) => {
+const Card = forwardRef(function Card(props, setButtonTranslateRef) {
     const [isTranslate, setIsTranslate] = useState(false);
     const {word, onClickTranslate} = props;
     // const {counttransled} = useSelector(state => state.counttransled)
@@ -26,13 +26,6 @@ const Card = React.forwardRef((props, setButtonTranslateRef) => {
     useEffect(() => {
         setIsTranslate(false);
     }, [id]);
-
-    // const buttonTranslateRef = useRef(null);
-
-    // const setButtonTranslateRef = useCallback((node) => {
-    // if (node) {
-    //     buttonTranslateRef.current = node;
-    // }}, []);
 
       useEffect(() => {
     if (isTranslate && setButtonTranslateRef && setButtonTranslateRef.current) {
@@ -57,7 +50,7 @@ const Card = React.forwardRef((props, setButtonTranslateRef) => {
                     className={buttonTranslate} 
                     name={'Translate'} 
                     onClick={onClickButton}
-                    ref={setButtonTranslateRef} />
+                    setButtonTranslateRef={setButtonTranslateRef} />
                     </span>
                 )}
             </div>
@@ -65,11 +58,13 @@ const Card = React.forwardRef((props, setButtonTranslateRef) => {
 
         <div className={ButtonStyle.buttons__container}>
         <div onClick={props.previousCard}>
-            <Button className={ButtonStyle.button} name={'Previous'}/>
+            <Button className={ButtonStyle.button} 
+            name={'Previous'}/>
         </div>
         
         <div onClick={props.nextCard}>
-        <Button className={ButtonStyle.button} name={'Next'}/>
+        <Button className={ButtonStyle.button} 
+        name={'Next'}/>
         </div>
         </div>
     </div>
