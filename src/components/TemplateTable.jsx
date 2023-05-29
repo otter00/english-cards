@@ -30,6 +30,12 @@ export default function Template(props) {
         word.level.trim() === '') {
           alert('Please enter a value');
         return;
+        } else if (!word.russian.match("[а-яА-ЯЁё]")) {
+          alert('Please enter a russian word');
+          return;
+        } else if (!word.english.match("^[a-zA-Z0-9]+$")) {
+          alert('Please enter an english word');
+          return;
         }
 
       setIsEditing(!isEditing);
