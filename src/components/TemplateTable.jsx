@@ -22,6 +22,7 @@ export default function Template(props) {
         setIsEditing(!isEditing);
     };
   
+    // function that saves entered word and checks whether field is empty
     const save = () => {
         if (word.english.trim() === '' || 
         word.russian.trim() === '' || 
@@ -32,6 +33,9 @@ export default function Template(props) {
 
       setIsEditing(!isEditing);
     }
+
+
+    // onChange funcs contain target value and set it into appropriate field
 
     const onChangeLevel = (event) => {
       const value = event.target.value;
@@ -71,6 +75,8 @@ export default function Template(props) {
                     onChange={onChangeLevel}
                     type="text"
                     value={word.level}
+                    // check whether field is empty
+                    // if true, set the class wth warning frame
                     className={word.level.trim() === '' ? `${TableAppearance.empty_input}` : ''}
                   />
               ) : ( 
