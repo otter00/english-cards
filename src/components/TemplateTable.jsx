@@ -7,6 +7,7 @@ import cn from 'classnames';
 let buttonEdit = cn([`${TableButton.buttonEdit}`, ` ${TableButton.generalButton}`]);
 let buttonSave = cn([`${TableButton.buttonSave}`, ` ${TableButton.generalButton}`]);
 let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalButton}`]);
+//let buttonDisabled = 
 
 export default function Template(props) {
     let { english, russian, level } = props;
@@ -111,11 +112,27 @@ export default function Template(props) {
                 <div className={TableAppearance.center__flex}>
                 {isEditing ? (
                     <>
-                      <Button className={buttonSave} onClick={save} name={'Save'}/>
-                      <Button className={buttonCansel} name={'Cancel'} onClick={handleCancelEdit}/>
+                      <Button 
+                      className={(word.english.trim() === '' || 
+                      word.russian.trim() === '' || 
+                      word.level.trim() === '') ? `${TableButton.generalButton__disabled}` : buttonSave} 
+                      
+                      onClick={save} 
+                      name={'Save'}
+                      disabled={word.english.trim() === '' || 
+                      word.russian.trim() === '' || 
+                      word.level.trim() === ''}/>
+
+                      <Button 
+                      className={buttonCansel} 
+                      name={'Cancel'} 
+                      onClick={handleCancelEdit}/>
                     </>
                   ) : (
-                    <Button className={buttonEdit} name={'Edit'} onClick={handleEdit} />
+                    <Button 
+                    className={buttonEdit} 
+                    name={'Edit'} 
+                    onClick={handleEdit} />
                   )}
                 </div>
             </td>

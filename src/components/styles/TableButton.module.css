@@ -45,4 +45,15 @@
   box-shadow: 2px 2px 2px rgb(244, 244, 244);
   transition: 200ms;
   cursor: pointer;
+}
+
+.generalButton__disabled {
+  background-color: rgb(161, 161, 161);
+  color: #FFF;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border: none;
+  border-radius: 20px;
+  width: 7em;
+  height: 3em;
 }/*# sourceMappingURL=TableButton.module.css.map */

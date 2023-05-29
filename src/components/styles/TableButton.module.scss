@@ -42,3 +42,12 @@
         cursor: pointer;
     }
 }
+
+.generalButton__disabled {
+    background-color: rgb(161, 161, 161);
+    @include ButtonFont__Disabled;
+    border: none;
+    @include BthRoundRadius;
+    width: 7em;
+    height: 3em;
+}
