@@ -39,6 +39,9 @@ export default function Template(props) {
         }
 
       setIsEditing(!isEditing);
+      console.log(word.english)
+      console.log(word.russian)
+      console.log(word.level)
     }
 
 
