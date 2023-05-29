@@ -71,6 +71,7 @@ export default function Template(props) {
                     onChange={onChangeLevel}
                     type="text"
                     value={word.level}
+                    className={word.level.trim() === '' ? `${TableAppearance.empty_input}` : ''}
                   />
               ) : ( 
                 <span className={TableAppearance.center__flex}>{word.level}</span>
@@ -82,6 +83,7 @@ export default function Template(props) {
                       onChange={onChangeEnglish}
                       type="text"
                       value={word.english}
+                      className={word.english.trim() === '' ? `${TableAppearance.empty_input}` : ''}
                     />
                   ) : (
                     <span className={TableAppearance.center__flex}>{word.english}</span>
@@ -93,6 +95,7 @@ export default function Template(props) {
                     onChange={onChangeRussian}
                     type="text"
                     value={word.russian}
+                    className={word.russian.trim() === '' ? `${TableAppearance.empty_input}` : ''}
                   />
             ) : (
                   <span className={TableAppearance.center__flex}>{word.russian}</span>
