@@ -1,4 +1,4 @@
-import React,  { useState } from 'react';
+import React,  { useState, useEffect } from 'react';
 import Button from './Button';
 import TableAppearance from './styles/Table.module.scss'
 import TableButton from './styles/TableButton.module.scss'
@@ -25,6 +25,10 @@ export default function Template(props) {
       }
     };
 
+    useEffect(() => {
+      checkInput();
+    }, [english, russian, level]);
+
     const handleEdit = () => {
         setIsEditing(!isEditing);
     };
@@ -39,6 +43,7 @@ export default function Template(props) {
         if (word.english.trim() === '' || 
         word.russian.trim() === '' || 
         word.level.trim() === '') {
+          setIsEmpty(true);
           alert(`Please fill all the inputs required`);
         return;
         } else if (!word.russian.match("[а-яА-ЯЁё]")) {
@@ -60,11 +65,10 @@ export default function Template(props) {
       const value = event.target.value;
 
       setWord(prevState => ({
-        //english: word.english,
-        //russian: word.russian,
         ...prevState,
         level: value,
       }));
+      setIsEmpty(false);
     }
 
     const onChangeEnglish = (event) => {
@@ -73,20 +77,18 @@ export default function Template(props) {
       setWord(prevState => ({
         ...prevState,
         english: value,
-        //russian: word.russian,
-        //level: word.level,
       }));
+      setIsEmpty(false);
     }
   
     const onChangeRussian = (event) => {
       const value = event.target.value;
 
       setWord(prevState => ({
-        //english: word.english,
         ...prevState,
         russian: value,
-        //level: word.level,
       }));
+      setIsEmpty(false);
     }
 
         return (
@@ -133,9 +135,9 @@ export default function Template(props) {
                 <div className={TableAppearance.center__flex}>
                 {isEditing ? (
                     <>
-                      <Button 
-                      className={isEmpty ? `${buttonDisabled}` : `${buttonSave}`} 
+                      <Button                   
                       onClick={save} 
+                      className={isEmpty ? `${buttonDisabled}` : `${buttonSave}`} 
                       name={'Save'}
                       disabled={isEmpty}/>
 
