@@ -7,12 +7,23 @@ import cn from 'classnames';
 let buttonEdit = cn([`${TableButton.buttonEdit}`, ` ${TableButton.generalButton}`]);
 let buttonSave = cn([`${TableButton.buttonSave}`, ` ${TableButton.generalButton}`]);
 let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalButton}`]);
-//let buttonDisabled = 
+let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
 
 export default function Template(props) {
     let { english, russian, level } = props;
     const [isEditing, setIsEditing] = useState(false);
     const [word, setWord] = useState({english, russian, level});
+    const [isEmpty, setIsEmpty] = useState(null);
+
+    const checkInput = () => {
+      if (word.english.trim() === '' || 
+      word.russian.trim() === '' || 
+      word.level.trim() === '') {
+        setIsEmpty(true);
+      } else {
+        setIsEmpty(false);
+      }
+    };
 
     const handleEdit = () => {
         setIsEditing(!isEditing);
@@ -22,26 +33,24 @@ export default function Template(props) {
         setWord({ english, russian, level });
         setIsEditing(!isEditing);
     };
-  
+
     // function that saves entered word and checks whether field is empty
     const save = () => {
         if (word.english.trim() === '' || 
         word.russian.trim() === '' || 
         word.level.trim() === '') {
-          alert('Please enter a value');
+          alert(`Please fill all the inputs required`);
         return;
         } else if (!word.russian.match("[а-яА-ЯЁё]")) {
           alert('Please enter a russian word');
           return;
-        } else if (!word.english.match("^[a-zA-Z0-9]+$")) {
+        } else if ((!word.english.match("^[a-zA-Z0-9]+$")) ||(!word.level.match("^[a-zA-Z0-9]+$")) ) {
           alert('Please enter an english word');
           return;
         }
 
       setIsEditing(!isEditing);
-      console.log(word.english)
-      console.log(word.russian)
-      console.log(word.level)
+      console.log(`Form contains english: ${word.english}, russian: ${word.russian}, level: ${word.level}`)
     }
 
 
@@ -50,31 +59,34 @@ export default function Template(props) {
     const onChangeLevel = (event) => {
       const value = event.target.value;
 
-      setWord({
-        english: word.english,
-        russian: word.russian,
+      setWord(prevState => ({
+        //english: word.english,
+        //russian: word.russian,
+        ...prevState,
         level: value,
-      });
+      }));
     }
 
     const onChangeEnglish = (event) => {
       const value = event.target.value;
 
-      setWord({
+      setWord(prevState => ({
+        ...prevState,
         english: value,
-        russian: word.russian,
-        level: word.level,
-      });
+        //russian: word.russian,
+        //level: word.level,
+      }));
     }
   
     const onChangeRussian = (event) => {
       const value = event.target.value;
 
-      setWord({
-        english: word.english,
+      setWord(prevState => ({
+        //english: word.english,
+        ...prevState,
         russian: value,
-        level: word.level,
-      });
+        //level: word.level,
+      }));
     }
 
         return (
@@ -122,14 +134,10 @@ export default function Template(props) {
                 {isEditing ? (
                     <>
                       <Button 
-                      className={(word.english.trim() === '' || 
-                      word.russian.trim() === '' || 
-                      word.level.trim() === '') ? `${TableButton.generalButton__disabled}` : buttonSave} 
+                      className={isEmpty ? `${buttonDisabled}` : `${buttonSave}`} 
                       onClick={save} 
                       name={'Save'}
-                      disabled={word.english.trim() === '' || 
-                      word.russian.trim() === '' || 
-                      word.level.trim() === ''}/>
+                      disabled={isEmpty}/>
 
                       <Button 
                       className={buttonCansel} 
