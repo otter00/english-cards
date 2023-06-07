@@ -25,7 +25,7 @@ class App extends React.Component {
       <Header />
 
     <Routes>
-      <Route path="/table" element={<TableW />} />
+      <Route path="/table" element={<TableWordsList />} />
       <Route path="/learn" element={<Learn />} />
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={<NoMatch />} />
@@ -49,12 +49,13 @@ function HomePage() {
   return <Home />
 }
 
-function TableW() {
+function TableWordsList() {
   return (<table className={Table.table}>
   <thead className={Table.thead}>
     <tr>
     <th>Level</th>
     <th>English</th>
+    <th>Transcription</th>
     <th>Russian</th>
     <th>Options</th>
     </tr>

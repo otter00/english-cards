@@ -10,15 +10,16 @@ let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalBut
 let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
 
 export default function Template(props) {
-    let { english, russian, level } = props;
+    let { english, russian, tags, transcription } = props;
     const [isEditing, setIsEditing] = useState(false);
-    const [word, setWord] = useState({english, russian, level});
+    const [word, setWord] = useState({english, russian, tags, transcription});
     const [isEmpty, setIsEmpty] = useState(null);
 
     const checkInput = () => {
       if (word.english.trim() === '' || 
       word.russian.trim() === '' || 
-      word.level.trim() === '') {
+      word.tags.trim() === '' || 
+      word.transcription.trim() === '') {
         setIsEmpty(true);
       } else {
         setIsEmpty(false);
@@ -27,14 +28,14 @@ export default function Template(props) {
 
     useEffect(() => {
       checkInput();
-    }, [english, russian, level]);
+    }, [english, russian, tags, transcription]);
 
     const handleEdit = () => {
         setIsEditing(!isEditing);
     };
     
     const handleCancelEdit = () => {
-        setWord({ english, russian, level });
+        setWord({ english, russian, tags, transcription });
         setIsEditing(!isEditing);
     };
 
@@ -42,20 +43,21 @@ export default function Template(props) {
     const save = () => {
         if (word.english.trim() === '' || 
         word.russian.trim() === '' || 
-        word.level.trim() === '') {
+        word.tags.trim() === '' ||
+        word.transcription.trim() === '') {
           setIsEmpty(true);
           alert(`Please fill all the inputs required`);
         return;
         } else if (!word.russian.match("[а-яА-ЯЁё]")) {
           alert('Please enter a russian word');
           return;
-        } else if ((!word.english.match("^[a-zA-Z0-9]+$")) ||(!word.level.match("^[a-zA-Z0-9]+$")) ) {
+        } else if ((!word.english.match("^[a-zA-Z0-9]+$")) ||(!word.tags.match("^[a-zA-Z0-9]+$")) ) {
           alert('Please enter an english word');
           return;
         }
 
       setIsEditing(!isEditing);
-      console.log(`Form contains english: ${word.english}, russian: ${word.russian}, level: ${word.level}`)
+      console.log(`Form contains english: ${word.english}, transcription: ${word.transcription}, russian: ${word.russian}, tags: ${word.tags}`)
     }
 
 
@@ -66,7 +68,7 @@ export default function Template(props) {
 
       setWord(prevState => ({
         ...prevState,
-        level: value,
+        tags: value,
       }));
       setIsEmpty(false);
     }
@@ -77,6 +79,16 @@ export default function Template(props) {
       setWord(prevState => ({
         ...prevState,
         english: value,
+      }));
+      setIsEmpty(false);
+    }
+
+    const onChangeTranscription = (event) => {
+      const value = event.target.value;
+
+      setWord(prevState => ({
+        ...prevState,
+        transcription: value,
       }));
       setIsEmpty(false);
     }
@@ -98,13 +110,13 @@ export default function Template(props) {
                     <input
                     onChange={onChangeLevel}
                     type="text"
-                    value={word.level}
+                    value={word.tags}
                     // check whether field is empty
                     // if true, set the class wth warning frame
-                    className={word.level.trim() === '' ? `${TableAppearance.empty_input}` : ''}
+                    className={word.tags.trim() === '' ? `${TableAppearance.empty_input}` : ''}
                   />
               ) : ( 
-                <span className={TableAppearance.center__flex}>{word.level}</span>
+                <span className={TableAppearance.center__flex}>{word.tags}</span>
                 )}
               </td>
             <td>
@@ -118,6 +130,18 @@ export default function Template(props) {
                   ) : (
                     <span className={TableAppearance.center__flex}>{word.english}</span>
                   )}
+            </td>
+            <td>
+            {isEditing ? (
+                    <input
+                    onChange={onChangeTranscription}
+                    type="text"
+                    value={word.transcription}
+                    className={word.transcription.trim() === '' ? `${TableAppearance.empty_input}` : ''}
+                  />
+            ) : (
+                  <span className={TableAppearance.center__flex}>{word.transcription}</span>
+            )}
             </td>
             <td>
             {isEditing ? (

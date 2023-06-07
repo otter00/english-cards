@@ -1,17 +1,19 @@
 import CardWordsJson from './CardWords';
+import SchoolWords from './SchoolJSON';
 import Template from './TemplateTable';
 import React from 'react';
 
 function TableWords() {
-    let CardWords = JSON.parse(CardWordsJson);
+    let CardWords = JSON.parse(SchoolWords);
     console.log(CardWords);
     return (
         <tbody> {
             CardWords.map((word, id) =>
                 <Template
                 key={id}
-                level={word.level}
+                tags={word.tags}
                 english={word.english}
+                transcription={word.transcription}
                 russian={word.russian}
 
                 name={'Edit'}

@@ -49,9 +49,10 @@
 
 .generalButton__disabled {
   background-color: rgb(161, 161, 161);
-  color: #FFF;
+  color: black;
   font-weight: 700;
   letter-spacing: 1.5px;
+  text-transform: uppercase;
   border: none;
   border-radius: 20px;
   width: 7em;

@@ -6,8 +6,9 @@ import ButtonStyle from './styles/Button.module.scss';
 import Button from './Button';
 import TableButton from './styles/TableButton.module.scss';
 import CardWordsJson from './CardWords';
+import SchoolWords from './SchoolJSON';
 
-let CardWords = JSON.parse(CardWordsJson);
+let CardWords = JSON.parse(SchoolWords);
 console.log(CardWords); //array
 
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, `${ButtonStyle.button}`]);
@@ -16,7 +17,7 @@ const Card = forwardRef(function Card(props, setButtonTranslateRef) {
     const [isTranslate, setIsTranslate] = useState(false);
     const {word, onClickTranslate} = props;
     // const {counttransled} = useSelector(state => state.counttransled)
-    const {level, topic, english, russian, id} = word;
+    const {tags, transcription, english, russian, id} = word;
 
     const onClickButton = () => {
         onClickTranslate();
@@ -38,9 +39,9 @@ const Card = forwardRef(function Card(props, setButtonTranslateRef) {
 
         <section className="card__content">
             <div className="card__word">
-                <span className="card__level">{level}</span>
-                <span className="card__topic">{topic}</span>
+                <span className="card__level">{tags}</span>
                 <span className="bold__word">{english}</span>
+                <span className="card__topic">{transcription}</span>
                 {isTranslate && (
                         <span onClick={onClickButton} className="word__translation">{russian}</span>
                 )} 

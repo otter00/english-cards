@@ -4,8 +4,9 @@ import './styles/styles.scss';
 import Card from './Card';
 import FinalCard from './EndOfCard';
 import JsonWords from "./CardWords";
+import SchoolJson from './SchoolJSON';
 
-let words = JSON.parse(JsonWords);
+let words = JSON.parse(SchoolJson);
 
 const CardSlider = () => {
     const [cardIndex, setCardIndex] = useState(0);
