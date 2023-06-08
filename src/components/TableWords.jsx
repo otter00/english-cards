@@ -3,12 +3,18 @@ import SchoolWords from './SchoolJSON';
 import Template from './TemplateTable';
 import React from 'react';
 
-function TableWords() {
+import { useContext, useState } from "react";
+import { WordsContext } from "../context/ContextProvider";
+
+export default function TableWords() {
+    const context = useContext(WordsContext);
+    const words = context.words;
+
     let CardWords = JSON.parse(SchoolWords);
-    console.log(CardWords);
+    //console.log(CardWords);
     return (
         <tbody> {
-            CardWords.map((word, id) =>
+            words.map((word, id) =>
                 <Template
                 key={id}
                 tags={word.tags}
@@ -23,5 +29,3 @@ function TableWords() {
         </tbody>
     )
 }
-
-export default TableWords;

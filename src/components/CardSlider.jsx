@@ -1,18 +1,23 @@
-import React, {useState, useRef, useCallback} from 'react';
+import React, {useState, useRef, useCallback, useContext} from 'react';
 import './styles/styles.scss';
 // import components
-import Card from './Card';
+import Card from './card';
 import FinalCard from './EndOfCard';
 import JsonWords from "./CardWords";
 import SchoolJson from './SchoolJSON';
+import { WordsContext } from "../context/ContextProvider";
 
-let words = JSON.parse(SchoolJson);
+//let words = JSON.parse(SchoolJson);
 
 const CardSlider = () => {
     const [cardIndex, setCardIndex] = useState(0);
     const [idxWordsTranslated, setIdxWordsTranslated] = useState([]);
     
     const buttonTranslateRef = useRef(null);
+
+    const context = useContext(WordsContext);
+    const words = context.words;
+    console.log(words);
 
     const setButtonTranslateRef = useCallback((node) => {
     if (node) {

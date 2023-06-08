@@ -1,58 +1,54 @@
 let SchoolJson = `[
     {
        "id":"13432",
-       "english":"draw",
-       "transcription":"[ drɔː ]",
-       "russian":"рисовать",
-       "tags":"глагол",
+       "english":"mother",
+       "transcription":"[ˈmʌðə]",
+       "russian":"мама",
+       "tags":"существительное",
        "tags_json":"[u0433u043bu0430u0433u043eu043b]"
     },
     {
         "id":"13433",
-        "english":"run",
-        "transcription":"[ rʌn ]",
-        "russian":"бежать",
-        "tags":"глагол",
+        "english":"redundant",
+        "transcription":"[rɪˈdʌndənt]",
+        "russian":"избыточный",
+        "tags":"прилагательное",
         "tags_json":"[u0433u043bu0430u0433u043eu043b]"
     },
     {
-        "english":"real",
-        "transcription":"[ rɪəl ]",
-        "russian":"реальный",
-        "tags":"прилагательное",
+        "english":"unleash",
+        "transcription":"[ʌnˈliːʃ]",
+        "russian":"высвобождать",
+        "tags":"глагол",
         "tags_json":"[u043fu0440u0438u043bu0430u0433u0430u0442u0435u043bu044cu043du043eu0435]"
     },
     {
         "id":"13435",
-        "english":"life",
-        "transcription":"[ laɪf ] ",
-        "russian":"жизнь",
-        "tags":"существительное",
+        "english":"nutshell",
+        "transcription":"[ˈnʌʧel]",
+        "russian":"в двух словах",
+        "tags":"наречие",
         "tags_json":"[u0441u0443u0449u0435u0441u0442u0432u0438u0442u0435u043bu044cu043du043eu0435]"
     },
     {
-        "id":"13436","english":"science","transcription":"[ ˈsaɪ.əns ]","russian":"наука","tags":"существительное",
+        "id":"13436",
+        "english":"hitchiker",
+        "transcription":"[ˈhɪʧhaɪkər]",
+        "russian":"попутчик",
+        "tags":"существительное",
         "tags_json":"[u0441u0443u0449u0435u0441u0442u0432u0438u0442u0435u043bu044cu043du043eu0435]"
 },
     {
-        "id":"13437","english":"took ","transcription":" [ tʊk ] ","russian":"взял","tags":"глагол",
+        "id":"13437","english":"inferior ","transcription":" [ɪnˈfɪərɪə] ","russian":"низший","tags":"прилагательное",
         "tags_json":"[u0433u043bu0430u0433u043eu043b]"
 },
     {
-        "id":"13438","english":"began","transcription":"[ bɪˈɡæn ]","russian":"началось","tags":" глагол",
+        "id":"13438","english":"virtue","transcription":"[ˈvɜːʧuː]","russian":"достоинство","tags":"существительное",
         "tags_json":"[ u0433u043bu0430u0433u043eu043b]"
 },
     {
         "id":"13439","english":"once","transcription":"[ wʌns ]","russian":"однажды","tags":" наречие",
         "tags_json":"[ u043du0430u0440u0435u0447u0438u0435]"
-},
-    {
-        "id":"13440","english":"horse ","transcription":"[ hɔːs ] ","russian":"лошадь","tags":"существительное",
-        "tags_json":"[u0441u0443u0449u0435u0441u0442u0432u0438u0442u0435u043bu044cu043du043eu0435]"
-},
-    {
-        "id":"13441","english":"cut","transcription":"[ kʌt ] ","russian":"резать","tags":"глагол",
-        "tags_json":"[u0433u043bu0430u0433u043eu043b]"
 },
     {
         "id":"13442","english":"sure","transcription":"[ ʃɔː r]","russian":"конечно, уверен",
@@ -98,9 +94,6 @@ let SchoolJson = `[
         "id":"13455","english":"above ","transcription":"[ əˈbʌv ] ","russian":"выше","tags":"наречие","tags_json":"[u043du0430u0440u0435u0447u0438u0435]"
 },
     {
-        "id":"13476","english":"hi","transcription":" [ˈtrævl]","russian":"привпте","tags":"приветствие","tags_json":"[u043fu0440u0438u0432u0435u0442u0441u0442u0432u0438u0435]"
-},
-    {
         "id":"13477","english":"travel","transcription":" [ˈtrævl]","russian":"путешествие","tags":"путешествие","tags_json":"[u043fu0443u0442u0435u0448u0435u0441u0442u0432u0438u0435]"
 },
     {
@@ -111,9 +104,6 @@ let SchoolJson = `[
 },
     {
         "id":"13494","english":"came","transcription":"[ keɪm ]","russian":"пришёл","tags":"глагол","tags_json":"[u0433u043bu0430u0433u043eu043b]"
-},
-    {
-        "id":"13497","english":"dog","transcription":" [dog]","russian":"собака-улыбака","tags":"животные","tags_json":"[u0436u0438u0432u043eu0442u043du044bu0435]"
 },
 {
         "id":"13506","english":"measured","transcription":"[ˈmeʒəd]","russian":"измеренный","tags":"состояние","tags_json":"[u0441u043eu0441u0442u043eu044fu043du0438u0435]"

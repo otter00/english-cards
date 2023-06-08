@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, forwardRef, useCallback} from 'react';
+import React, {useEffect, useState, useContext, useRef, forwardRef, useCallback} from 'react';
 import cn from 'classnames';
 import './styles/styles.scss';
 
@@ -7,6 +7,9 @@ import Button from './Button';
 import TableButton from './styles/TableButton.module.scss';
 import CardWordsJson from './CardWords';
 import SchoolWords from './SchoolJSON';
+
+import { WordsContext } from "../context/ContextProvider";
+
 
 let CardWords = JSON.parse(SchoolWords);
 console.log(CardWords); //array
@@ -18,6 +21,10 @@ const Card = forwardRef(function Card(props, setButtonTranslateRef) {
     const {word, onClickTranslate} = props;
     // const {counttransled} = useSelector(state => state.counttransled)
     const {tags, transcription, english, russian, id} = word;
+
+    const context = useContext(WordsContext);
+    const words = context.words;
+    console.log(words);
 
     const onClickButton = () => {
         onClickTranslate();

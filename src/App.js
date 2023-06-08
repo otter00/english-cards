@@ -8,7 +8,7 @@ import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
 import Home from './components/Home';
-
+import { ContextProvider } from './context/ContextProvider';
 
 import {
   BrowserRouter as Router,
@@ -19,6 +19,7 @@ import {
 class App extends React.Component {
   render () {
     return (
+      <ContextProvider>
     <Router>
       <div className="body">
 
@@ -33,6 +34,7 @@ class App extends React.Component {
 
       </div>
     </Router>
+    </ContextProvider>
     )
   }
 }
