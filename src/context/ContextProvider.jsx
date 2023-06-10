@@ -16,7 +16,7 @@ export const ContextProvider = ({ children }) => {
           if (response.ok) {
             return response.json();
           } else {
-            throw new Error("попробуйте еще раз");
+            throw new Error("Error while loading");
           }
         })
         .then((data) => {
@@ -104,11 +104,12 @@ useEffect(() => {
     loadData();
   }, []);
 
+  //analogue if(isLoading)
   {
-    isLoading && <div>Loading...</div>;
+    isLoading && <p>Loading...</p>;
   }
   {
-    error && <div>{`Ошибка: ${error.message}`}</div>;
+    error && <p>{`Ooops, error occured: ${error.message}`}</p>;
   }
 
   const values = { words };

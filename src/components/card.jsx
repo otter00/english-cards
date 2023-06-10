@@ -11,8 +11,8 @@ import SchoolWords from './SchoolJSON';
 import { WordsContext } from "../context/ContextProvider";
 
 
-let CardWords = JSON.parse(SchoolWords);
-console.log(CardWords); //array
+//let CardWords = JSON.parse(SchoolWords);
+//console.log(CardWords); //array
 
 const buttonTranslate = cn([`${TableButton.buttonTranslate}`, `${ButtonStyle.button}`]);
 

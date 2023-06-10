@@ -2,16 +2,36 @@ import CardWordsJson from './CardWords';
 import SchoolWords from './SchoolJSON';
 import Template from './TemplateTable';
 import React from 'react';
+import styled from 'styled-components';
 
 import { useContext, useState } from "react";
 import { WordsContext } from "../context/ContextProvider";
+
+const Loading = styled.div`
+color: white;
+display: flex;
+justify-content: center;
+text-transform: uppercase;
+font-size: 54px;
+font-weight: 600;
+`
 
 export default function TableWords() {
     const context = useContext(WordsContext);
     const words = context.words;
 
-    let CardWords = JSON.parse(SchoolWords);
+    // JSON with words from school
+
+    //let CardWords = JSON.parse(SchoolWords);
     //console.log(CardWords);
+
+    // here we use words got from context
+    if (!words) {
+        return <Loading>Loading...</Loading>;
+      } else if (words) {
+        console.log(words);
+      }
+    
     return (
         <tbody> {
             words.map((word, id) =>

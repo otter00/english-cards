@@ -11,6 +11,11 @@
     @include ButtonFont;
 }
 
+.buttonDelete {
+    background-color: rgba(146, 15, 146, 0.696);
+    @include ButtonFont;
+}
+
 .buttonCansel {
     background-color: red;
     @include ButtonFont;
