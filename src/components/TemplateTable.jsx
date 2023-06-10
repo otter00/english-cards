@@ -40,6 +40,10 @@ export default function Template(props) {
         setIsEditing(!isEditing);
     };
 
+    function delString() {
+      setWord({});
+    }
+
     // function that saves entered word and checks whether field is empty
     const save = () => {
         if (word.english.trim() === '' || 
@@ -180,7 +184,8 @@ export default function Template(props) {
 
                     <Button 
                     className={buttonDelete}
-                    name={'Delete'} />
+                    name={'Delete'}
+                    onClick={delString} />
                     </>
                   )}
                 </div>
