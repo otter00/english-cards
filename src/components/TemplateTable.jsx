@@ -16,7 +16,7 @@ export default function Template(props) {
     const [isEditing, setIsEditing] = useState(false);
     const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
     const [isEmpty, setIsEmpty] = useState(null);
-    const {deleteWord} = useContext(WordsContext); // call deleteWord from the context 
+    const { deleteWord, editWord } = useContext(WordsContext); // call deleteWord from the context 
     // and set in into variable deleteWord
 
     // useEffect с зависимостями
@@ -76,6 +76,11 @@ export default function Template(props) {
         }
 
       setIsEditing(!isEditing);
+      // call for function from context to edit word and send it to api
+      editWord(id, word);
+      // here the editFunc calls when we save changes 
+      // then we send it id and object 'word'
+      // with changes
       console.log(`Form contains english: ${word.english}, transcription: ${word.transcription}, russian: ${word.russian}, tags: ${word.tags}`)
     }
 

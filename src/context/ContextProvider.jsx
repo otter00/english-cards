@@ -50,33 +50,41 @@ export const ContextProvider = ({ children }) => {
 //     }
 //   }
 
-//   async function updateWord(id, word) {
-//     const index = words.findIndex((item) => item.id === word.id);
-//     words[index] = word;
-//     setWords([...words]);
-//     console.log("update");
-//     try {
-//       const data = await fetch(`/api/words/${id}/update`, {
-//         method: "POST",
-//         mode: "cors",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(word),
-//       });
+async function editWord(id, newWord) {
+  console.log("edited");
 
-//       const json = await data.json();
-
-//       console.log(json);
-//     } catch (err) {
-//       return "Не получилось редактировать слово";
-//     }
-//   }
+  try {
+    fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newWord),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Try again");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setIsLoading(false);
+        setWords((prevWords) => [...prevWords, data]);
+      });
+  } catch (error) {
+    setIsLoading(false);
+    setError(error);
+    return "Fail to edit the word";
+  }
+}
 
 // function to delete word from the table
 // id - wordId, newWord - information of word (ru, en, etc)
 async function deleteWord(id, newWord) {
-  console.log("delete");
+  console.log("deleted");
 
   try {
     // get word from the api with its id
@@ -92,7 +100,7 @@ async function deleteWord(id, newWord) {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("попробуйте еще раз");
+          throw new Error("Try again");
         }
       })
       .then((data) => {
@@ -105,7 +113,7 @@ async function deleteWord(id, newWord) {
   } catch (error) {
     setIsLoading(false);
     setError(error);
-    return "Не удалось удалить слово";
+    return "Fail to delete the word";
   }
   loadData();
 }
@@ -123,7 +131,7 @@ useEffect(() => {
   }
 
   // set context funcs to variable to export
-  const values = { words, deleteWord };
+  const values = { words, deleteWord, editWord };
 
   // В контексте ContextProvider children представляет собой все дочерние компоненты
   // которые передаются внутрь ContextProvider в структуре JSX
