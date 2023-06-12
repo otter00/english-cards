@@ -36,7 +36,9 @@ export default function TableWords() {
         <tbody> {
             words.map((word, id) =>
                 <Template
-                key={id}
+                // key & id we get from JSON as id & tags_json
+                key={id} // id
+                id={word.id} // tags_json
                 tags={word.tags}
                 english={word.english}
                 transcription={word.transcription}

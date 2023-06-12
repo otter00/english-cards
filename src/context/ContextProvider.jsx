@@ -73,21 +73,20 @@ export const ContextProvider = ({ children }) => {
 //     }
 //   }
 
+// function to delete word from the table
+// id - wordId, newWord - information of word (ru, en, etc)
 async function deleteWord(id, newWord) {
-  // const index = words.findIndex((item) => item.id === word.id);
-  // words.splice([index], 1);
-  // setWords([...words]);
-
   console.log("delete");
 
   try {
+    // get word from the api with its id
     fetch(`/api/words/${id}/delete`, {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newWord),
+      body: JSON.stringify(newWord), // convert text to json
     })
       .then((response) => {
         if (response.ok) {
@@ -98,6 +97,9 @@ async function deleteWord(id, newWord) {
       })
       .then((data) => {
         setIsLoading(false);
+        // filter the list of words
+        // retain only the words with another id
+        // if id mathes with id from the list, delete mathed word
         setWords((prevWords) => prevWords.filter((word) => word.id !== id));
       });
   } catch (error) {
@@ -120,8 +122,11 @@ useEffect(() => {
     error && <p>{`Ooops, error occured: ${error.message}`}</p>;
   }
 
+  // set context funcs to variable to export
   const values = { words, deleteWord };
 
+  // В контексте ContextProvider children представляет собой все дочерние компоненты
+  // которые передаются внутрь ContextProvider в структуре JSX
   return (
     <WordsContext.Provider value={values}>{children}</WordsContext.Provider>
   );

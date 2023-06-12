@@ -1,5 +1,6 @@
-import React,  { useState, useEffect } from 'react';
+import React,  { useState, useContext, useEffect } from 'react';
 import Button from './Button';
+import { WordsContext } from '../context/ContextProvider';
 import TableAppearance from './styles/Table.module.scss'
 import TableButton from './styles/TableButton.module.scss'
 import cn from 'classnames';
@@ -11,10 +12,23 @@ let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
 let buttonDelete = cn([`${TableButton.buttonDelete}`, ` ${TableButton.generalButton}`]);
 
 export default function Template(props) {
-    let { english, russian, tags, transcription } = props;
+    let { english, russian, tags, transcription, id } = props;
     const [isEditing, setIsEditing] = useState(false);
-    const [word, setWord] = useState({english, russian, tags, transcription});
+    const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
     const [isEmpty, setIsEmpty] = useState(null);
+    const {deleteWord} = useContext(WordsContext); // call deleteWord from the context 
+    // and set in into variable deleteWord
+
+    // useEffect с зависимостями
+    // при изменении любого из этих свойств в props эффект будет вызван
+    useEffect(() => {
+      setWord({
+        english: props.english,
+        transcription: props.transcription,
+        russian: props.russian,
+        tags: props.tags,
+      });
+    }, [props.english, props.transcription, props.russian, props.tags]);
 
     const checkInput = () => {
       if (word.english.trim() === '' || 
@@ -40,9 +54,9 @@ export default function Template(props) {
         setIsEditing(!isEditing);
     };
 
-    function delString() {
-      setWord({});
-    }
+    // function delString() {
+    //   setWord({});
+    // }
 
     // function that saves entered word and checks whether field is empty
     const save = () => {
@@ -106,6 +120,19 @@ export default function Template(props) {
         russian: value,
       }));
       setIsEmpty(false);
+    }
+
+  // handleDeleteWord вызывает функцию deleteWord с двумя аргументами: id и wordToDelete.
+ //id - id удаляемого слова
+ // wordToDelete - объект со свойствами english, transcription, russian, tags
+    const handleDeleteWord = () => {
+      const wordToDelete = {
+        english: word.english,
+        transcription: word.transcription,
+        russian: word.russian,
+        tags: word.tags,
+      };
+      deleteWord(id, wordToDelete);
     }
 
         return (
@@ -185,7 +212,8 @@ export default function Template(props) {
                     <Button 
                     className={buttonDelete}
                     name={'Delete'}
-                    onClick={delString} />
+                    // handleDeleteWord привязана к событию onClick кнопки
+                    onClick={handleDeleteWord} />
                     </>
                   )}
                 </div>

@@ -19,6 +19,8 @@ import {
 class App extends React.Component {
   render () {
     return (
+      // компоненты страницы из Routes будут доступны внутри ContextProvider через children
+      // внутри ContextProvider children используются для отображения и обработки дочерних компонентов
       <ContextProvider>
     <Router>
       <div className="body">
