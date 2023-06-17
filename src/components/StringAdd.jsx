@@ -11,15 +11,11 @@ import Table from './styles/Table.module.scss';
 import { useState, useEffect, useContext } from "react";
 import { WordsContext } from '../context/ContextProvider';
 
-let buttonEdit = cn([`${TableButton.buttonEdit}`, ` ${TableButton.generalButton}`]);
-let buttonSave = cn([`${TableButton.buttonSave}`, ` ${TableButton.generalButton}`]);
-let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalButton}`]);
+let buttonAdd = cn([`${TableButton.buttonAdd}`, ` ${TableButton.generalButton}`]);
 let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
-let buttonDelete = cn([`${TableButton.buttonDelete}`, ` ${TableButton.generalButton}`]);
 
 export default function StringAdd(props) {
   const [isValidInput, setIsValidInput] = useState(true);
-  const { deleteWord, editWord } = useContext(WordsContext);
   let { english, russian, tags, transcription, id } = props;
   const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
 
@@ -58,16 +54,6 @@ export default function StringAdd(props) {
   const handleSubject = (event) => {
     setValueSubject(event.target.value);
   };
-
-  const handleDeleteWord = () => {
-    const wordToDelete = {
-      english: word.english,
-      transcription: word.transcription,
-      russian: word.russian,
-      tags: word.tags,
-    };
-    deleteWord(id, wordToDelete);
-  }
 
   function checkString() {
     if (
@@ -116,7 +102,7 @@ export default function StringAdd(props) {
     <tr>
       {err}
       <div className={Table.table}>
-          <form onSubmit={save} className={TableAppearance.add__body}>
+          <div onSubmit={save} className={TableAppearance.add__body}>
             <Input name="english" valueWord="слово" onChange={handleEn} />
             <Input
               name="transcription"
@@ -126,21 +112,14 @@ export default function StringAdd(props) {
             <Input name="russian" valueWord="перевод" onChange={handleRu} />
             <Input name="tags" valueWord="тема" onChange={handleSubject} />
 
-            <div className={TableAppearance.center__flex}>
+            <div className={TableAppearance.word__new__button}>
                 <Button    
                 disabled={!isValidInput} 
-                className={buttonSave}
-                name={'Save'}>
-                </Button>
-
-                <Button
-                   onClick={handleDeleteWord}
-                  className={buttonDelete}
-                  name={'Delete'}
-                >
+                className={buttonAdd}
+                name={'Add'}>
                 </Button>
             </div>
-          </form>
+          </div>
       </div>
     </tr>
   );

@@ -16,6 +16,11 @@
     @include ButtonFont;
 }
 
+.buttonAdd {
+    background-color: rgb(249, 193, 41);
+    @include ButtonFont;
+}
+
 .buttonCansel {
     background-color: red;
     @include ButtonFont;
