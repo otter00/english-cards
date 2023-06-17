@@ -112,13 +112,13 @@ export default function StringAdd(props) {
             <Input name="russian" valueWord="перевод" onChange={handleRu} />
             <Input name="tags" valueWord="тема" onChange={handleSubject} />
 
-            <div className={TableAppearance.word__new__button}>
+            <td className={TableAppearance.save__row}>
                 <Button    
                 disabled={!isValidInput} 
                 className={buttonAdd}
                 name={'Add'}>
                 </Button>
-            </div>
+            </td>
           </div>
       </div>
     </tr>

@@ -8,7 +8,10 @@ import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
 import Home from './components/Home';
+import AddStringRow from './components/AddStringRow';
+
 import StringAdd from './components/StringAdd';
+
 import { ContextProvider } from './context/ContextProvider';
 
 import {
@@ -57,7 +60,8 @@ function HomePage() {
 function TableWordsList() {
   return (
     <>
-    <StringAdd/>
+  <AddStringRow/>
+    {/* <StringAdd/> */}
   <table className={Table.table}>
   <thead className={Table.thead}>
     <tr>
