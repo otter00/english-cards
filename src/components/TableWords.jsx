@@ -1,6 +1,7 @@
 import CardWordsJson from './CardWords';
 import SchoolWords from './SchoolJSON';
 import Template from './TemplateTable';
+import InputAdd from './StringAdd';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -33,6 +34,7 @@ export default function TableWords() {
       }
     
     return (
+        <>
         <tbody> {
             words.map((word, id) =>
                 <Template
@@ -49,5 +51,6 @@ export default function TableWords() {
             )
         }
         </tbody>
+        </>
     )
 }

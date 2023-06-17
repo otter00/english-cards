@@ -1,8 +1,8 @@
 import React,  { useState, useContext, useEffect } from 'react';
 import Button from './Button';
 import { WordsContext } from '../context/ContextProvider';
-import TableAppearance from './styles/Table.module.scss'
-import TableButton from './styles/TableButton.module.scss'
+import TableAppearance from './styles/Table.module.scss';
+import TableButton from './styles/TableButton.module.scss';
 import cn from 'classnames';
 
 let buttonEdit = cn([`${TableButton.buttonEdit}`, ` ${TableButton.generalButton}`]);
@@ -141,6 +141,7 @@ export default function Template(props) {
     }
 
         return (
+          <>
         <tr>
             <td>
               {isEditing? (
@@ -224,5 +225,6 @@ export default function Template(props) {
                 </div>
             </td>
         </tr>
+        </>
     );
 }

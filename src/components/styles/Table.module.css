@@ -1,11 +1,18 @@
 .table {
-  margin: 10vh 5vw 10vh;
+  margin: 2vh 5vw 2vh;
 }
-.table tr {
+.table tr,
+.table .add__input {
   color: white;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1.5px;
+}
+.table .word__add {
+  margin: 1vh 0;
+}
+.table .add__input {
+  margin: 1vh;
 }
 .table th {
   color: black;
@@ -38,6 +45,10 @@
   font-size: 18px;
 }
 
+.word__new {
+  margin: 2vh 0 2vh;
+}
+
 .center__flex {
   display: flex;
   justify-content: space-around;
@@ -49,4 +60,8 @@
 
 .empty_input {
   border: 3px solid rgb(255, 238, 0);
+}
+
+.add__body {
+  display: flex;
 }/*# sourceMappingURL=Table.module.css.map */
