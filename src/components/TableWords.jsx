@@ -1,7 +1,6 @@
 import CardWordsJson from './CardWords';
 import SchoolWords from './SchoolJSON';
 import Template from './TemplateTable';
-import InputAdd from './StringAdd';
 import React from 'react';
 import styled from 'styled-components';
 

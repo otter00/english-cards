@@ -10,8 +10,6 @@ import TableWords from './components/TableWords';
 import Home from './components/Home';
 import AddStringRow from './components/AddStringRow';
 
-import StringAdd from './components/StringAdd';
-
 import { ContextProvider } from './context/ContextProvider';
 
 import {
@@ -61,7 +59,6 @@ function TableWordsList() {
   return (
     <>
   <AddStringRow/>
-    {/* <StringAdd/> */}
   <table className={Table.table}>
   <thead className={Table.thead}>
     <tr>
