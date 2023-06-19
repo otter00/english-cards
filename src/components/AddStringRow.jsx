@@ -28,9 +28,8 @@ export default function StringRow() {
         // console.log('Transcription:', tr);
         // console.log('Russian:', ru);
 
-        // объект newWord, содержащий введенные значения
-        //вызываем функцию addWord и передаем ей созданный объект newWord,
-        //чтобы добавить слово на API
+        //create an object contains input values
+        //then call for func and send it an object to add new word into API
         const newWord = {
             tags: lvl,
             english: en,
