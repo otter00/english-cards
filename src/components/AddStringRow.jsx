@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './styles/styles.scss';
 import styled from 'styled-components';
 import AddStringRow from './styles/AddStringRow.module.scss';
 import TableButton from './styles/TableButton.module.scss';
 import cn from 'classnames';
 import Button from './Button';
+import { WordsContext } from '../context/ContextProvider';
 
 const RowDiv = styled.div`
-    margin: 2vh;
+    margin: auto;
 `
 
 let buttonAdd = cn([`${TableButton.buttonAdd}`, ` ${TableButton.generalButton}`]);
@@ -18,12 +19,23 @@ export default function StringRow(props) {
     const [tr, setTranscription] = useState('tr');
     const [ru, setRussian] = useState('ru');
 
+    const { addWord } = useContext(WordsContext); 
+
     const handleButtonAddClick = () => {
         // Выводим введенные данные в консоль
         console.log('Level:', lvl);
         console.log('English:', en);
         console.log('Transcription:', tr);
         console.log('Russian:', ru);
+
+        const newWord = {
+            tags: lvl,
+            english: en,
+            transcription: tr,
+            russian: ru
+          };
+
+        addWord(newWord);
       };
 
     return (
@@ -70,7 +82,7 @@ export default function StringRow(props) {
                         onChange={(e) => setRussian(e.target.value)}></input>
                         </td>
 
-                        <td  >
+                        <td>
                         <div className={AddStringRow.add__container}>
                             <Button 
                                 className={buttonAdd} 

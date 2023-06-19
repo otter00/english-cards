@@ -29,26 +29,35 @@ export const ContextProvider = ({ children }) => {
     }
   }
 
-//   async function addWord(newWord) {
-//     setWords([...words, json]);
-//     console.log("post");
-//     try {
-//       const data = await fetch("/api/words/add", {
-//         method: "POST",
-//         mode: "cors",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(newWord),
-//       });
-
-//       const json = await data.json();
-
-//       console.log(json);
-//     } catch (err) {
-//       return "Что-то пошло не так";
-//     }
-//   }
+  async function addWord(newWord) {
+    console.log("addWord");
+    try {
+      fetch("api/words/add", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Try again");
+          }
+        })
+        .then((data) => {
+          setIsLoading(false);
+          setWords((prevWords) => [...prevWords, data]);
+        });
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+      return "Fail to add word";
+    }
+    loadData();
+  }
 
 async function editWord(id, newWord) {
   console.log("edited");
@@ -131,7 +140,7 @@ useEffect(() => {
   }
 
   // set context funcs to variable to export
-  const values = { words, deleteWord, editWord };
+  const values = { words, deleteWord, editWord, addWord };
 
   // В контексте ContextProvider children представляет собой все дочерние компоненты
   // которые передаются внутрь ContextProvider в структуре JSX
