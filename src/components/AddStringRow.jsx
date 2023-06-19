@@ -13,21 +13,24 @@ const RowDiv = styled.div`
 
 let buttonAdd = cn([`${TableButton.buttonAdd}`, ` ${TableButton.generalButton}`]);
 
-export default function StringRow(props) {
-    const [lvl, setLevel] = useState('lvl');
+export default function StringRow() {
+    const [lvl, setLevel] = useState('lvl'); //initialize the state
     const [en, setEnglish] = useState('en');
     const [tr, setTranscription] = useState('tr');
     const [ru, setRussian] = useState('ru');
 
-    const { addWord } = useContext(WordsContext); 
+    const { addWord } = useContext(WordsContext); //call for function from context
 
     const handleButtonAddClick = () => {
         // Выводим введенные данные в консоль
-        console.log('Level:', lvl);
-        console.log('English:', en);
-        console.log('Transcription:', tr);
-        console.log('Russian:', ru);
+        // console.log('Level:', lvl);
+        // console.log('English:', en);
+        // console.log('Transcription:', tr);
+        // console.log('Russian:', ru);
 
+        // объект newWord, содержащий введенные значения
+        //вызываем функцию addWord и передаем ей созданный объект newWord,
+        //чтобы добавить слово на API
         const newWord = {
             tags: lvl,
             english: en,
@@ -58,6 +61,7 @@ export default function StringRow(props) {
                         type="text"
                         name='lvl'
                         value={lvl}
+                        //initialize the state
                         onChange={(e) => setLevel(e.target.value)}></input>
                         </td>
 
