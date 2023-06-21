@@ -5,7 +5,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useContext, useState } from "react";
-import { WordsContext } from "../context/ContextProvider";
+//import { WordsContext } from "../context/ContextProvider";
+
+import { observer, inject } from "mobx-react";
 
 const Loading = styled.div`
 color: white;
@@ -17,8 +19,8 @@ font-weight: 600;
 `
 
 export default function TableWords() {
-    const context = useContext(WordsContext);
-    const words = context.words;
+    //const context = useContext(WordsContext);
+    //const words = context.words;
 
     // JSON with words from school
 

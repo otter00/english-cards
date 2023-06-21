@@ -1,6 +1,7 @@
 import React,  { useState, useContext, useEffect } from 'react';
 import Button from './Button';
-import { WordsContext } from '../context/ContextProvider';
+//import { WordsContext } from '../context/ContextProvider';
+import { observer, inject } from "mobx-react";
 import TableAppearance from './styles/Table.module.scss'
 import TableButton from './styles/TableButton.module.scss'
 import cn from 'classnames';
@@ -11,12 +12,12 @@ let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalBut
 let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
 let buttonDelete = cn([`${TableButton.buttonDelete}`, ` ${TableButton.generalButton}`]);
 
-export default function Template(props) {
+export default function Template(props,  { editWord, deleteWord }) {
     let { english, russian, tags, transcription, id } = props;
     const [isEditing, setIsEditing] = useState(false);
     const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
     const [isEmpty, setIsEmpty] = useState(null);
-    const { deleteWord, editWord } = useContext(WordsContext); // call deleteWord from the context 
+    //const { deleteWord, editWord } = useContext(WordsContext); // call deleteWord from the context 
     // and set in into variable deleteWord
 
     // useEffect с зависимостями

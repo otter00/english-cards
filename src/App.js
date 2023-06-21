@@ -8,7 +8,9 @@ import CardSlider from './components/CardSlider';
 import Header from './components/Header';
 import TableWords from './components/TableWords';
 import Home from './components/Home';
-import { ContextProvider } from './context/ContextProvider';
+//import { ContextProvider } from './context/ContextProvider';
+import { Provider } from "mobx-react";
+import store from "./components/store/store";
 
 import {
   BrowserRouter as Router,
@@ -21,7 +23,7 @@ class App extends React.Component {
     return (
       // компоненты страницы из Routes будут доступны внутри ContextProvider через children
       // внутри ContextProvider children используются для отображения и обработки дочерних компонентов
-      <ContextProvider>
+    <Provider {...store}>
     <Router>
       <div className="body">
 
@@ -36,7 +38,7 @@ class App extends React.Component {
 
       </div>
     </Router>
-    </ContextProvider>
+    </Provider>
     )
   }
 }
