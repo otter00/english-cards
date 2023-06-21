@@ -115,31 +115,31 @@ class Words {
     }
   }
 
-  //   loadData = async () => {
-  //     // если данные уже были загружены или их уже кто-то загружает
-  //     // то ничего не делаем
-  //     if (this.isLoaded || this.isLoading) {
-  //       return;
-  //     }
+    loadData = async () => {
+      // если данные уже были загружены или их уже кто-то загружает
+      // то ничего не делаем
+      if (this.isLoaded || this.isLoading) {
+        return;
+      }
 
-  //     // пока все синхронно
-  //     // поэтому runInAction не нужены
-  //     this.isLoading = true;
+      // пока все синхронно
+      // поэтому runInAction не нужены
+      this.isLoading = true;
 
-  //     // загрузка с сервера (тут должен быть fetch)
-  //     // асинхронно
-  //     const response = await fetch("http://itgirlschool.justmakeit.ru/api/words");
-  //     const data = await response.json();
+      // загрузка с сервера (тут должен быть fetch)
+      // асинхронно
+      const response = await fetch("http://itgirlschool.justmakeit.ru/api/words");
+      const data = await response.json();
 
-  //     // так как код выше выполнялся асинхронно
-  //     // то теперь меняя данные в MobX
-  //     // надо явно указать на эти изменения
-  //     // с помощью функции runInAction
-  // runInAction(() => {
-  //   this.words = data;
-  //   this.isLoading = false;
-  //   this.isLoaded = true;
-  // });
-  //   };
+      // так как код выше выполнялся асинхронно
+      // то теперь меняя данные в MobX
+      // надо явно указать на эти изменения
+      // с помощью функции runInAction
+  runInAction(() => {
+    this.words = data;
+    this.isLoading = false;
+    this.isLoaded = true;
+  });
+    };
 }
 export default Words;

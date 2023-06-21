@@ -18,7 +18,7 @@ font-size: 54px;
 font-weight: 600;
 `
 
-function TableWords({ words }) {
+function TableWords({ words, loadData }) {
     //const context = useContext(WordsContext);
     //const words = context.words;
 
@@ -55,13 +55,14 @@ function TableWords({ words }) {
 }
 
 export default inject(({ wordsData }) => {
-    const { words } = wordsData;
+    const { words, loadData } = wordsData;
   
-    // useEffect(() => {
-    //   loadData();
-    // });
+    useEffect(() => {
+      loadData();
+    });
   
     return {
       words,
+      loadData,
     };
   })(observer(TableWords));

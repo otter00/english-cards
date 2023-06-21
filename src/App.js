@@ -10,6 +10,7 @@ import TableWords from './components/TableWords';
 import Home from './components/Home';
 //import { ContextProvider } from './context/ContextProvider';
 import { Provider } from "mobx-react";
+import { inject, observer } from 'mobx-react';
 import store from "./components/store/store";
 
 import {
@@ -76,3 +77,5 @@ function Learn() {
 }
 
 export default App;
+
+inject(["store"])(observer(App));
