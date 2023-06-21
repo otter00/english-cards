@@ -12,7 +12,7 @@ let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalBut
 let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
 let buttonDelete = cn([`${TableButton.buttonDelete}`, ` ${TableButton.generalButton}`]);
 
-export default function Template(props,  { editWord, deleteWord }) {
+function Template(props, { editWord, deleteWord }) {
     let { english, russian, tags, transcription, id } = props;
     const [isEditing, setIsEditing] = useState(false);
     const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
@@ -227,3 +227,12 @@ export default function Template(props,  { editWord, deleteWord }) {
         </tr>
     );
 }
+
+export default inject(({ wordsData }) => {
+  const { editWord, deleteWord } = wordsData;
+
+  return {
+    editWord,
+    deleteWord,
+  };
+})(observer(Template));

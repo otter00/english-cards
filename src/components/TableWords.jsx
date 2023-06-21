@@ -4,7 +4,7 @@ import Template from './TemplateTable';
 import React from 'react';
 import styled from 'styled-components';
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 //import { WordsContext } from "../context/ContextProvider";
 
 import { observer, inject } from "mobx-react";
@@ -18,7 +18,7 @@ font-size: 54px;
 font-weight: 600;
 `
 
-export default function TableWords() {
+function TableWords({ words }) {
     //const context = useContext(WordsContext);
     //const words = context.words;
 
@@ -53,3 +53,15 @@ export default function TableWords() {
         </tbody>
     )
 }
+
+export default inject(({ wordsData }) => {
+    const { words } = wordsData;
+  
+    // useEffect(() => {
+    //   loadData();
+    // });
+  
+    return {
+      words,
+    };
+  })(observer(TableWords));

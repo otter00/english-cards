@@ -115,27 +115,6 @@ class Words {
     }
   }
 
-  //   loadData = () => {
-  //     this.isLoading(true);
-  //     try {
-  //       fetch("http://itgirlschool.justmakeit.ru/api/words")
-  //         .then((response) => {
-  //           if (response.ok) {
-  //             return response.json();
-  //           } else {
-  //             throw new Error("попробуйте еще раз");
-  //           }
-  //         })
-  //         .then((data) => {
-  //           setIsLoading(false);
-  //           setWords(data);
-  //         });
-  //     } catch (error) {
-  //       setIsLoading(false);
-  //       setError(error);
-  //     }
-  //   };
-
   //   loadData = async () => {
   //     // если данные уже были загружены или их уже кто-то загружает
   //     // то ничего не делаем
