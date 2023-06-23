@@ -85,6 +85,7 @@ export default function Template(props) {
       setIsEditing(!isEditing);
       // call for function from context to edit word and send it to api
       editWord(id, word);
+      window.location.reload();
       // here the editFunc calls when we save changes 
       // then we send it id and object 'word'
       // with changes
