@@ -18,7 +18,7 @@ font-size: 54px;
 font-weight: 600;
 `
 
-function TableWords({ words, loadData }) {
+function TableWords({ words }) {
     //const context = useContext(WordsContext);
     //const words = context.words;
 

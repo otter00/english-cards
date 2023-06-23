@@ -1,6 +1,5 @@
-import React,  { useState, useContext, useEffect } from 'react';
+import React,  { useState, useEffect } from 'react';
 import Button from './Button';
-//import { WordsContext } from '../context/ContextProvider';
 import { observer, inject } from "mobx-react";
 import TableAppearance from './styles/Table.module.scss'
 import TableButton from './styles/TableButton.module.scss'
@@ -12,13 +11,11 @@ let buttonCansel = cn([`${TableButton.buttonCansel}`, ` ${TableButton.generalBut
 let buttonDisabled = cn([`${TableButton.generalButton__disabled}`]);
 let buttonDelete = cn([`${TableButton.buttonDelete}`, ` ${TableButton.generalButton}`]);
 
-function Template(props, { editWord, deleteWord }) {
-    let { english, russian, tags, transcription, id } = props;
+function Template(props) {
+    const { english, russian, tags, transcription, id, editWord, deleteWord } = props;
     const [isEditing, setIsEditing] = useState(false);
     const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
     const [isEmpty, setIsEmpty] = useState(null);
-    //const { deleteWord, editWord } = useContext(WordsContext); // call deleteWord from the context 
-    // and set in into variable deleteWord
 
     // useEffect с зависимостями
     // при изменении любого из этих свойств в props эффект будет вызван
@@ -55,10 +52,6 @@ function Template(props, { editWord, deleteWord }) {
         setIsEditing(!isEditing);
     };
 
-    // function delString() {
-    //   setWord({});
-    // }
-
     // function that saves entered word and checks whether field is empty
     const save = () => {
         if (word.english.trim() === '' || 
@@ -78,10 +71,10 @@ function Template(props, { editWord, deleteWord }) {
 
       setIsEditing(!isEditing);
       // call for function from context to edit word and send it to api
-      editWord(id, word);
       // here the editFunc calls when we save changes 
       // then we send it id and object 'word'
       // with changes
+      editWord(id, word);
       console.log(`Form contains english: ${word.english}, transcription: ${word.transcription}, russian: ${word.russian}, tags: ${word.tags}`)
     }
 
@@ -139,6 +132,7 @@ function Template(props, { editWord, deleteWord }) {
         tags: word.tags,
       };
       deleteWord(id, wordToDelete);
+      window.location.reload();
     }
 
         return (
@@ -228,11 +222,7 @@ function Template(props, { editWord, deleteWord }) {
     );
 }
 
-export default inject(({ wordsData }) => {
-  const { editWord, deleteWord } = wordsData;
-
-  return {
-    editWord,
-    deleteWord,
-  };
-})(observer(Template));
+export default inject(({ wordsData }) => ({
+  editWord: wordsData.editWord, // Inject the editWord function from the wordsData store
+  deleteWord: wordsData.deleteWord, // Inject the deleteWord function from the wordsData store
+}))(observer(Template));
