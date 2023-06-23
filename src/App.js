@@ -12,6 +12,7 @@ import Home from './components/Home';
 import { Provider } from "mobx-react";
 import { inject, observer } from 'mobx-react';
 import store from "./components/store/store";
+import AddStringRow from './components/AddStringRow';
 
 import {
   BrowserRouter as Router,
@@ -57,7 +58,10 @@ function HomePage() {
 }
 
 function TableWordsList() {
-  return (<table className={Table.table}>
+  return (
+    <>
+    <AddStringRow/>
+  <table className={Table.table}>
   <thead className={Table.thead}>
     <tr>
     <th>Level</th>
@@ -69,7 +73,8 @@ function TableWordsList() {
   </thead>
   <TableWords>
   </TableWords>
-</table>)
+</table>
+</>)
 }
 
 function Learn() {

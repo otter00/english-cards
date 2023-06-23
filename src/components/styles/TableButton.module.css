@@ -6,6 +6,13 @@
   color: black;
 }
 
+.buttonAdd {
+  background-color: rgb(249, 193, 41);
+  color: #FFF;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
 .buttonEdit {
   background-color: rgb(255, 155, 54);
   color: #FFF;

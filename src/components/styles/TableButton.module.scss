@@ -6,6 +6,11 @@
     color: black;
 }
 
+.buttonAdd {
+    background-color: rgb(249, 193, 41);
+    @include ButtonFont;
+}
+
 .buttonEdit {
     background-color: rgb(255, 155, 54);
     @include ButtonFont;
