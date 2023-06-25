@@ -37,39 +37,110 @@ runInAction(() => {
 });
 };
 
+addWord = async (id, newWord) => {
+  this.isLoading = true;
+  
+  try {
+    const response = await fetch(
+      `http://itgirlschool.justmakeit.ru/api/words/${id}/add`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord),
+      }
+    );
+
+    if (response.ok) {
+      runInAction(() => {
+        this.words.push(newWord);
+      });
+    } else {
+      throw new Error("Try again");
+    }
+  } catch (error) {
+    runInAction(() => {
+      this.error = error;
+    });
+    return "Failed to add word";
+  } finally {
+    runInAction(() => {
+      this.isLoading = false;
+    });
+  }
+};
+
 //   addWord = async (id, newWord) => {
-//     this.isLoading = true;
+//     //this.isLoading = true;
 //     console.log("addWord");
-//     try {
-//       fetch("api/words/add", {
+//     // try {
+//     //   fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/add`, {
+//     //     method: "POST",
+//     //     mode: "cors",
+//     //     headers: {
+//     //       "Content-Type": "application/json",
+//     //     },
+//     //     body: JSON.stringify(newWord),
+//     //   });
+
+    
+//   try {
+//     const response = await fetch(
+//       `http://itgirlschool.justmakeit.ru/api/words/${id}/add`,
+//       {
 //         method: "POST",
 //         mode: "cors",
 //         headers: {
 //           "Content-Type": "application/json",
 //         },
 //         body: JSON.stringify(newWord),
-//       })
-//         .then((response) => {
-//           if (response.ok) {
-//             return response.json();
-//           } else {
-//             throw new Error("Try again");
-//           }
-//         })
-//         .then(() => {
-//           this.isLoading = false;
-//           this.words.push(newWord);
+//       }
+//     );
+
+//       if (response.ok) {
+//         runInAction(() => {
+//           this.words = this.words.map((word) =>
+//             word.id === id ? { ...word, ...newWord } : word
+//           );
 //         });
+//       } else {
+//         throw new Error("Try again");
+//       }
 //     } catch (error) {
-//       this.isLoading = false;
-//       this.error = error;
-//       return "Fail to add word";
+//       runInAction(() => {
+//         this.error = error;
+//       });
+//       return "Failed to add word";
+//     } finally {
+//       runInAction(() => {
+//         this.words = newWord;
+//         this.words.push(newWord);
+//         this.isLoading = false;
+//       });
 //     }
-//     runInAction(() => {
-//   this.words = newWord;
-//   this.isLoading = false;
-//   this.isLoaded = true;
-// });
+
+// //         .then((response) => {
+// //           if (response.ok) {
+// //             return response.json();
+// //           } else {
+// //             throw new Error("Try again");
+// //           }
+// //         })
+// //         .then(() => {
+// //           this.isLoading = false;
+// //           this.words.push(newWord);
+// //         });
+// //     } catch (error) {
+// //       this.isLoading = false;
+// //       this.error = error;
+// //       return "Fail to add word";
+// //     }
+// //     runInAction(() => {
+// //   this.isLoading = false;
+// //   this.isLoaded = true;
+// // });
 //   }
 
 editWord = async (id, newWord) => {

@@ -5,6 +5,7 @@ import AddStringRow from './styles/AddStringRow.module.scss';
 import TableButton from './styles/TableButton.module.scss';
 import cn from 'classnames';
 import Button from './Button';
+import { inject, observer } from 'mobx-react';
 //import { WordsContext } from '../context/ContextProvider';
 
 const RowDiv = styled.div`
@@ -13,13 +14,13 @@ const RowDiv = styled.div`
 
 let buttonAdd = cn([`${TableButton.buttonAdd}`, ` ${TableButton.generalButton}`]);
 
-export default function StringRow() {
+const StringRow = (props) => {
     const [lvl, setLevel] = useState('lvl'); //initialize the state
     const [en, setEnglish] = useState('en');
     const [tr, setTranscription] = useState('tr');
     const [ru, setRussian] = useState('ru');
 
-    //const { addWord } = useContext(WordsContext); //call for function from context
+    const { id, addWord } = props; //call for function from context
 
     const handleButtonAddClick = () => {
         // Выводим введенные данные в консоль
@@ -37,7 +38,7 @@ export default function StringRow() {
             russian: ru
           };
 
-        //addWord(newWord);
+        addWord(id, newWord);
       };
 
     return (
@@ -99,3 +100,7 @@ export default function StringRow() {
         </RowDiv>
     )
 }
+
+export default inject(({ wordsData }) => ({
+    addWord: wordsData.addWord, // Inject the addWord function from the wordsData store
+  }))(observer(StringRow));

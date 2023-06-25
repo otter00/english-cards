@@ -14,7 +14,7 @@ let buttonDelete = cn([`${TableButton.buttonDelete}`, ` ${TableButton.generalBut
 function Template(props) {
     const { english, russian, tags, transcription, id, editWord, deleteWord } = props;
     const [isEditing, setIsEditing] = useState(false);
-    const [word, setWord] = useState({english, russian, tags, transcription}); // пропсы из TableWords
+    const [word, setWord] = useState({english, russian, tags, transcription, id}); // пропсы из TableWords
     const [isEmpty, setIsEmpty] = useState(null);
 
     // useEffect с зависимостями
