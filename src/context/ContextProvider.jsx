@@ -29,10 +29,45 @@ export const ContextProvider = ({ children }) => {
     }
   }
 
-  async function addWord(newWord) {
+  // addWord = async (id, newWord) => {
+  //   this.isLoading = true;
+
+  //   try {
+  //     const response = await fetch(
+  //       `http://itgirlschool.justmakeit.ru/api/words/${id}/add`,
+  //       {
+  //         method: "POST",
+  //         mode: "cors",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(newWord),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       runInAction(() => {
+  //         this.words.push(newWord);
+  //       });
+  //     } else {
+  //       throw new Error("Try again");
+  //     }
+  //   } catch (error) {
+  //     runInAction(() => {
+  //       this.error = error;
+  //     });
+  //     return "Failed to add word";
+  //   } finally {
+  //     runInAction(() => {
+  //       this.isLoading = false;
+  //     });
+  //   }
+  // };
+
+  async function addWord(id, newWord) {
     console.log("addWord");
     try {
-      fetch(`api/words/add`, {
+      fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/add`, {
         method: "POST",
         mode: "cors",
         headers: {

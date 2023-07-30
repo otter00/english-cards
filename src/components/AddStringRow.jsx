@@ -16,13 +16,14 @@ let buttonAdd = cn([
   ` ${TableButton.generalButton}`,
 ]);
 
-export default function StringRow() {
+export default function StringRow(props) {
   const [lvl, setLevel] = useState("lvl"); //initialize the state
   const [en, setEnglish] = useState("en");
   const [tr, setTranscription] = useState("tr");
   const [ru, setRussian] = useState("ru");
 
   const { addWord } = useContext(WordsContext); //call for function from context
+  const { id } = props;
 
   const handleButtonAddClick = () => {
     // Выводим введенные данные в консоль
@@ -40,7 +41,7 @@ export default function StringRow() {
       russian: ru,
     };
 
-    addWord(newWord);
+    addWord(id, newWord);
   };
 
   return (
