@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }) => {
   async function addWord(newWord) {
     console.log("addWord");
     try {
-      fetch("api/words/add", {
+      fetch(`api/words/add`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -59,75 +59,75 @@ export const ContextProvider = ({ children }) => {
     loadData();
   }
 
-async function editWord(id, newWord) {
-  console.log("edited");
+  async function editWord(id, newWord) {
+    console.log("edited");
 
-  try {
-    fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newWord),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Try again");
-        }
+    try {
+      fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord),
       })
-      .then((data) => {
-        console.log(data);
-        setIsLoading(false);
-        setWords((prevWords) => [...prevWords, data]);
-      });
-  } catch (error) {
-    setIsLoading(false);
-    setError(error);
-    return "Fail to edit the word";
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Try again");
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          setIsLoading(false);
+          setWords((prevWords) => [...prevWords, data]);
+        });
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+      return "Fail to edit the word";
+    }
   }
-}
 
-// function to delete word from the table
-// id - wordId, newWord - information of word (ru, en, etc)
-async function deleteWord(id, newWord) {
-  console.log("deleted");
+  // function to delete word from the table
+  // id - wordId, newWord - information of word (ru, en, etc)
+  async function deleteWord(id, newWord) {
+    console.log("deleted");
 
-  try {
-    // get word from the api with its id
-    fetch(`/api/words/${id}/delete`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newWord), // convert text to json
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Try again");
-        }
+    try {
+      // get word from the api with its id
+      fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord), // convert text to json
       })
-      .then((data) => {
-        setIsLoading(false);
-        // filter the list of words
-        // retain only the words with another id
-        // if id mathes with id from the list, delete mathed word
-        setWords((prevWords) => prevWords.filter((word) => word.id !== id));
-      });
-  } catch (error) {
-    setIsLoading(false);
-    setError(error);
-    return "Fail to delete the word";
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Try again");
+          }
+        })
+        .then((data) => {
+          setIsLoading(false);
+          // filter the list of words
+          // retain only the words with another id
+          // if id mathes with id from the list, delete mathed word
+          setWords((prevWords) => prevWords.filter((word) => word.id !== id));
+        });
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+      return "Fail to delete the word";
+    }
+    loadData();
   }
-  loadData();
-}
 
-useEffect(() => {
+  useEffect(() => {
     loadData();
   }, []);
 
