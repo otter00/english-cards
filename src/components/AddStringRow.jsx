@@ -22,8 +22,8 @@ export default function StringRow(props) {
   const [tr, setTranscription] = useState("tr");
   const [ru, setRussian] = useState("ru");
 
+  let { id } = props;
   const { addWord } = useContext(WordsContext); //call for function from context
-  const { id } = props;
 
   const handleButtonAddClick = () => {
     // Выводим введенные данные в консоль
@@ -41,6 +41,7 @@ export default function StringRow(props) {
       russian: ru,
     };
 
+    console.log(newWord);
     addWord(id, newWord);
   };
 
