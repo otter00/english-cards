@@ -55,12 +55,12 @@ export default function Template(props) {
     }
   };
 
-  useEffect(() => {
-    console.log("mount");
-    return () => {
-      console.log("unmount");
-    };
-  }, []);
+  // useEffect(() => {
+  //   console.log("mount");
+  //   return () => {
+  //     console.log("unmount");
+  //   };
+  // }, []);
 
   useEffect(() => {
     checkInput();

@@ -1,7 +1,7 @@
 import Template from "./TemplateTable";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import axios from "axios";
 import { useContext } from "react";
 import { WordsContext } from "../context/ContextProvider";
 
@@ -15,20 +15,30 @@ const Loading = styled.div`
 `;
 
 export default function TableWords() {
-  const context = useContext(WordsContext);
-  const words = context.words;
+  //const context = useContext(WordsContext);
+  //const words = context.words;
 
-  // JSON with words from school
+  const [words, setWords] = useState([]);
 
-  //let CardWords = JSON.parse(SchoolWords);
-  //console.log(CardWords);
+  useEffect(() => {
+    axios
+      .get(
+        "https://6536ba1dbb226bb85dd28e56.mockapi.io/api/diploma_blog/english_game"
+      )
+      .then((response) => {
+        setWords(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   // here we use words got from context
-  if (!words) {
-    return <Loading>Loading...</Loading>;
-  } else if (words) {
-    console.log(words);
-  }
+  // if (!words) {
+  //   return <Loading>Loading...</Loading>;
+  // } else if (words) {
+  //   console.log(words);
+  // }
 
   return (
     <>
@@ -37,8 +47,8 @@ export default function TableWords() {
         {words.map((word, id) => (
           <Template
             // key & id we get from JSON as id & tags_json
-            key={id} // id
-            id={word.id} // tags_json
+            //key={id} // id
+            key={word.id} // tags_json
             tags={word.tags}
             english={word.english}
             transcription={word.transcription}

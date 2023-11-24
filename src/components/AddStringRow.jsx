@@ -6,6 +6,7 @@ import TableButton from "./styles/TableButton.module.scss";
 import cn from "classnames";
 import Button from "./Button";
 import { WordsContext } from "../context/ContextProvider";
+import axios from "axios";
 
 const RowDiv = styled.div`
   margin: auto;
@@ -16,33 +17,56 @@ let buttonAdd = cn([
   ` ${TableButton.generalButton}`,
 ]);
 
-export default function StringRow(props) {
-  const [lvl, setLevel] = useState("lvl"); //initialize the state
-  const [en, setEnglish] = useState("en");
-  const [tr, setTranscription] = useState("tr");
-  const [ru, setRussian] = useState("ru");
+export default function StringRow() {
+  const [data, setData] = useState({
+    tags: "",
+    english: "",
+    transcription: "",
+    russian: "",
+  });
+  const [response, setResponse] = useState("");
 
-  let { id } = props;
-  const { addWord } = useContext(WordsContext); //call for function from context
+  // const [lvl, setLevel] = useState("lvl"); //initialize the state
+  // const [en, setEnglish] = useState("en");
+  // const [tr, setTranscription] = useState("tr");
+  // const [ru, setRussian] = useState("ru");
 
-  const handleButtonAddClick = () => {
+  //let { id } = props;
+  //const { addWord } = useContext(WordsContext); //call for function from context
+
+  const handleChange = (event) => {
+    setData({ ...data, [event.target.name]: event.target.value });
+  };
+
+  const handleButtonAddClick = (event) => {
     // Выводим введенные данные в консоль
     // console.log('Level:', lvl);
     // console.log('English:', en);
     // console.log('Transcription:', tr);
     // console.log('Russian:', ru);
-
     //create an object contains input values
     //then call for func and send it an object to add new word into API
-    const newWord = {
-      tags: lvl,
-      english: en,
-      transcription: tr,
-      russian: ru,
-    };
+    // const newWord = {
+    //   tags: lvl,
+    //   english: en,
+    //   transcription: tr,
+    //   russian: ru,
+    // };
+    // console.log(newWord);
+    // addWord(id, newWord);
 
-    console.log(newWord);
-    addWord(id, newWord);
+    event.preventDefault();
+    axios
+      .post(
+        "https://6536ba1dbb226bb85dd28e56.mockapi.io/api/diploma_blog/english_game",
+        data
+      )
+      .then((response) => {
+        setResponse(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -64,37 +88,37 @@ export default function StringRow(props) {
             <td>
               <input
                 type="text"
-                name="lvl"
-                value={lvl}
+                name="tags"
+                value={data.tags}
                 //initialize the state
-                onChange={(e) => setLevel(e.target.value)}
+                onChange={handleChange}
               ></input>
             </td>
 
             <td>
               <input
                 type="text"
-                name="en"
-                value={en}
-                onChange={(e) => setEnglish(e.target.value)}
+                name="english"
+                value={data.english}
+                onChange={handleChange}
               ></input>
             </td>
 
             <td>
               <input
                 type="text"
-                name="tr"
-                value={tr}
-                onChange={(e) => setTranscription(e.target.value)}
+                name="transcription"
+                value={data.transcription}
+                onChange={handleChange}
               ></input>
             </td>
 
             <td>
               <input
                 type="text"
-                name="ru"
-                value={ru}
-                onChange={(e) => setRussian(e.target.value)}
+                name="russian"
+                value={data.russian}
+                onChange={handleChange}
               ></input>
             </td>
 
