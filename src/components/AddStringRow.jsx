@@ -5,7 +5,7 @@ import AddStringRow from "./styles/AddStringRow.module.scss";
 import TableButton from "./styles/TableButton.module.scss";
 import cn from "classnames";
 import Button from "./Button";
-import { WordsContext } from "../context/ContextProvider";
+// import { WordsContext } from "../context/ContextProvider";
 import axios from "axios";
 
 const RowDiv = styled.div`

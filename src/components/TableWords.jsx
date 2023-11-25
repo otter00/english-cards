@@ -33,6 +33,14 @@ export default function TableWords() {
       });
   }, []);
 
+  if (words.length === 0) {
+    return (
+      <>
+        <Loading>Loading...</Loading>
+      </>
+    );
+  }
+
   // here we use words got from context
   // if (!words) {
   //   return <Loading>Loading...</Loading>;
