@@ -2,8 +2,9 @@ import Template from "./TemplateTable";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useContext } from "react";
-import { WordsContext } from "../context/ContextProvider";
+//import { useContext } from "react";
+//import { WordsContext } from "../context/ContextProvider";
+import { wordsAPI } from "../utils/words_data";
 
 const Loading = styled.div`
   color: white;
@@ -22,9 +23,7 @@ export default function TableWords() {
 
   useEffect(() => {
     axios
-      .get(
-        "https://6536ba1dbb226bb85dd28e56.mockapi.io/api/diploma_blog/english_game"
-      )
+      .get(wordsAPI)
       .then((response) => {
         setWords(response.data);
       })
@@ -40,6 +39,7 @@ export default function TableWords() {
       </>
     );
   }
+  console.log(words);
 
   // here we use words got from context
   // if (!words) {
@@ -56,7 +56,7 @@ export default function TableWords() {
           <Template
             // key & id we get from JSON as id & tags_json
             //key={id} // id
-            key={word.id} // tags_json
+            id={word.id} // tags_json
             tags={word.tags}
             english={word.english}
             transcription={word.transcription}

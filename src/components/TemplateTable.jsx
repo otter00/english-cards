@@ -4,6 +4,8 @@ import { WordsContext } from "../context/ContextProvider";
 import TableAppearance from "./styles/Table.module.scss";
 import TableButton from "./styles/TableButton.module.scss";
 import cn from "classnames";
+import { wordsAPI } from "../utils/words_data";
+import axios from "axios";
 
 let buttonEdit = cn([
   `${TableButton.buttonEdit}`,
@@ -25,22 +27,30 @@ let buttonDelete = cn([
 
 export default function Template(props) {
   let { english, russian, tags, transcription, id } = props;
+  console.log(props);
   const [isEditing, setIsEditing] = useState(false);
-  const [word, setWord] = useState({ english, russian, tags, transcription }); // пропсы из TableWords
+  const [word, setWord] = useState({
+    id,
+    english,
+    russian,
+    tags,
+    transcription,
+  }); // пропсы из TableWords
   const [isEmpty, setIsEmpty] = useState(null);
-  const { deleteWord, editWord } = useContext(WordsContext); // call deleteWord from the context
+  // const { deleteWord, editWord } = useContext(WordsContext); // call deleteWord from the context
   // and set in into variable deleteWord
 
   // useEffect с зависимостями
   // при изменении любого из этих свойств в props эффект будет вызван
   useEffect(() => {
     setWord({
+      id: props.id,
       english: props.english,
       transcription: props.transcription,
       russian: props.russian,
       tags: props.tags,
     });
-  }, [props.english, props.transcription, props.russian, props.tags]);
+  }, [props.id, props.english, props.transcription, props.russian, props.tags]);
 
   const checkInput = () => {
     if (
@@ -103,7 +113,7 @@ export default function Template(props) {
 
     setIsEditing(!isEditing);
     // call for function from context to edit word and send it to api
-    editWord(id, word);
+    //editWord(id, word);
     window.location.reload();
     // here the editFunc calls when we save changes
     // then we send it id and object 'word'
@@ -160,12 +170,27 @@ export default function Template(props) {
   // wordToDelete - объект со свойствами english, transcription, russian, tags
   const handleDeleteWord = () => {
     const wordToDelete = {
+      id: word.id,
       english: word.english,
       transcription: word.transcription,
       russian: word.russian,
       tags: word.tags,
     };
-    deleteWord(id, wordToDelete);
+    handleDeleteArticle(wordToDelete);
+  };
+
+  const handleDeleteArticle = (wordToDelete) => {
+    axios
+      // удаляем определённый пост по его id
+      .delete(`${wordsAPI}${wordToDelete.id}`)
+      .then((response) => {
+        // вызываем отрисовку массива после обновления данных на сервере
+        console.log(`delete `, response.data);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

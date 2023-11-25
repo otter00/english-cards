@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+//import { useContext } from "react";
 import "./styles/styles.scss";
 import styled from "styled-components";
 import AddStringRow from "./styles/AddStringRow.module.scss";
@@ -7,6 +8,7 @@ import cn from "classnames";
 import Button from "./Button";
 // import { WordsContext } from "../context/ContextProvider";
 import axios from "axios";
+import { wordsAPI } from "../utils/words_data";
 
 const RowDiv = styled.div`
   margin: auto;
@@ -55,14 +57,12 @@ export default function StringRow() {
     // console.log(newWord);
     // addWord(id, newWord);
 
-    event.preventDefault();
+    //event.preventDefault();
     axios
-      .post(
-        "https://6536ba1dbb226bb85dd28e56.mockapi.io/api/diploma_blog/english_game",
-        data
-      )
+      .post(wordsAPI, data)
       .then((response) => {
         setResponse(response.data);
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
