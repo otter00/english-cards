@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
-import { WordsContext } from "../context/ContextProvider";
+//import { WordsContext } from "../context/ContextProvider";
 import TableAppearance from "./styles/Table.module.scss";
 import TableButton from "./styles/TableButton.module.scss";
 import cn from "classnames";
@@ -27,7 +27,7 @@ let buttonDelete = cn([
 
 export default function Template(props) {
   let { english, russian, tags, transcription, id } = props;
-  console.log(props);
+  //console.log(props);
   const [isEditing, setIsEditing] = useState(false);
   const [word, setWord] = useState({
     id,
@@ -42,17 +42,37 @@ export default function Template(props) {
 
   // useEffect с зависимостями
   // при изменении любого из этих свойств в props эффект будет вызван
-  useEffect(() => {
-    setWord({
-      id: props.id,
-      english: props.english,
-      transcription: props.transcription,
-      russian: props.russian,
-      tags: props.tags,
-    });
-  }, [props.id, props.english, props.transcription, props.russian, props.tags]);
+  // useEffect(() => {
+  //   setWord({
+  //     id: props.id,
+  //     english: props.english,
+  //     transcription: props.transcription,
+  //     russian: props.russian,
+  //     tags: props.tags,
+  //   });
+  // }, [props.id, props.english, props.transcription, props.russian, props.tags]);
 
-  const checkInput = () => {
+  // const checkInput = () => {
+  //   if (
+  //     word.english === "" ||
+  //     word.russian === "" ||
+  //     word.tags === "" ||
+  //     word.transcription === ""
+  //   ) {
+  //     setIsEmpty(true);
+  //   } else {
+  //     setIsEmpty(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   console.log("mount");
+  //   return () => {
+  //     console.log("unmount");
+  //   };
+  // }, []);
+
+  useEffect(() => {
     if (
       word.english === "" ||
       word.russian === "" ||
@@ -63,18 +83,7 @@ export default function Template(props) {
     } else {
       setIsEmpty(false);
     }
-  };
-
-  // useEffect(() => {
-  //   console.log("mount");
-  //   return () => {
-  //     console.log("unmount");
-  //   };
-  // }, []);
-
-  useEffect(() => {
-    checkInput();
-  }, [english, russian, tags, transcription]);
+  }, [word.english, word.russian, word.tags, word.transcription]);
 
   const handleEdit = () => {
     setIsEditing(!isEditing);
@@ -85,9 +94,17 @@ export default function Template(props) {
     setIsEditing(!isEditing);
   };
 
-  // function delString() {
-  //   setWord({});
-  // }
+  const editWord = (wordToEdit) => {
+    console.log(wordToEdit.id);
+    axios
+      .put(`${wordsAPI}${wordToEdit.id}`, wordToEdit)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // function that saves entered word and checks whether field is empty
   const save = () => {
@@ -112,9 +129,11 @@ export default function Template(props) {
     }
 
     setIsEditing(!isEditing);
+    console.log(word);
+
     // call for function from context to edit word and send it to api
-    //editWord(id, word);
-    window.location.reload();
+    editWord(word);
+    //window.location.reload();
     // here the editFunc calls when we save changes
     // then we send it id and object 'word'
     // with changes
@@ -124,7 +143,6 @@ export default function Template(props) {
   };
 
   // onChange funcs contain target value and set it into appropriate field
-
   const onChangeLevel = (event) => {
     const value = event.target.value;
 

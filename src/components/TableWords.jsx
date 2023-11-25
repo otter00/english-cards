@@ -51,11 +51,11 @@ export default function TableWords() {
   return (
     <>
       <tbody>
-        {" "}
         {words.map((word, id) => (
           <Template
             // key & id we get from JSON as id & tags_json
             //key={id} // id
+            key={word.id}
             id={word.id} // tags_json
             tags={word.tags}
             english={word.english}
